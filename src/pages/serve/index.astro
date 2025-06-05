@@ -2,6 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
+import { getAssetPath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -40,7 +41,7 @@ import Card from '../../components/ui/Card.astro';
         <div class="mb-12">
           <div class="aspect-[16/9] rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
             <img 
-              src="/images/helping-hands.jpg" 
+              src={getAssetPath("/images/helping-hands.jpg")} 
               alt="Helping hands and community support" 
               class="w-full h-full object-cover"
             >
@@ -115,7 +116,7 @@ import Card from '../../components/ui/Card.astro';
         <div class="mb-12">
           <div class="aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
             <img 
-              src="/images/community-service.jpg" 
+              src={getAssetPath("/images/community-service.jpg")} 
               alt="Community service and volunteer work" 
               class="w-full h-full object-cover"
             >

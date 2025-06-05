@@ -1,5 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
+import { getAssetPath } from '../../utils/paths.js';
 
 const {
   title = "Welcome Home to Living Hope",
@@ -16,7 +17,7 @@ const {
   <div class="absolute inset-0 z-0">
     <!-- Church exterior background image -->
     <img 
-      src="/images/church-exterior.jpg" 
+      src={getAssetPath("/images/church-exterior.jpg")} 
       alt="Living Hope Lutheran Church exterior" 
       class="w-full h-full object-cover"
     >

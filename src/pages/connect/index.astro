@@ -2,6 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
+import { getAssetPath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -42,7 +43,7 @@ import Card from '../../components/ui/Card.astro';
         <div class="mb-12">
           <div class="aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
             <img 
-              src="/images/church-fellowship.jpg" 
+              src={getAssetPath("/images/church-fellowship.jpg")} 
               alt="Church fellowship and community gathering" 
               class="w-full h-full object-cover"
             >
@@ -126,7 +127,7 @@ import Card from '../../components/ui/Card.astro';
         <div class="mb-12">
           <div class="aspect-[16/9] rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
             <img 
-              src="/images/bible-study-group.jpg" 
+              src={getAssetPath("/images/bible-study-group.jpg")} 
               alt="Bible study group discussion" 
               class="w-full h-full object-cover"
             >

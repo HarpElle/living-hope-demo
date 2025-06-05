@@ -3,6 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
 import Accordion from '../../components/ui/Accordion.astro';
+import { getAssetPath } from '../../utils/paths.js';
 
 const faqItems = [
   {
@@ -77,12 +78,12 @@ const faqItems = [
               class="w-full h-full object-cover"
               controls
               preload="metadata"
-              poster="/images/church-welcome-sign.jpg"
+              poster={getAssetPath("/images/church-welcome-sign.jpg")}
             >
-              <source src="/videos/pastoral-welcome.mp4" type="video/mp4">
+              <source src={getAssetPath("/videos/pastoral-welcome.mp4")} type="video/mp4">
               <p class="p-8 text-center text-gray-600">
                 Your browser doesn't support video playback. 
-                <a href="/videos/pastoral-welcome.mp4" class="text-primary-600 hover:text-primary-700 underline">
+                                  <a href={getAssetPath("/videos/pastoral-welcome.mp4")} class="text-primary-600 hover:text-primary-700 underline">
                   Download the video
                 </a>
               </p>

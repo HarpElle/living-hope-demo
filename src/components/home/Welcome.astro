@@ -1,5 +1,6 @@
 ---
 import Button from '../ui/Button.astro';
+import { getAssetPath } from '../../utils/paths.js';
 
 const {
   title = "Welcome to Our Church Family",
@@ -8,8 +9,8 @@ const {
   welcomeMessage = "For over 55 years, Living Hope Lutheran Church has been a beacon of faith, hope, and love in the West Allis community. As a WELS congregation, we believe that everyone has a place at God's table, and we're committed to creating a welcoming environment where all can grow in faith and fellowship.",
   mission = "To share God's love through worship, service, and community",
   showVideo = true,
-  videoThumbnail = "/images/welcome-video-thumb.jpg",
-  videoUrl = "/videos/welcome-message.mp4"
+  videoThumbnail = getAssetPath("/images/welcome-video-thumb.jpg"),
+  videoUrl = getAssetPath("/videos/welcome-message.mp4")
 } = Astro.props;
 ---
 
@@ -41,7 +42,7 @@ const {
         <div class="flex items-center mb-8">
           <div class="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4">
             <img 
-              src="/images/church-leadership.jpg" 
+              src={getAssetPath("/images/church-leadership.jpg")} 
               alt="Church Leadership" 
               class="w-full h-full object-cover"
             >

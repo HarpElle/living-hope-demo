@@ -3,6 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Card from '../../components/ui/Card.astro';
 import Button from '../../components/ui/Button.astro';
 import ContactForm from '../../components/forms/ContactForm.astro';
+import { getAssetPath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -43,7 +44,7 @@ import ContactForm from '../../components/forms/ContactForm.astro';
         <div class="mb-12">
           <div class="aspect-[16/9] rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
             <img 
-              src="/images/church-welcome-sign.jpg" 
+              src={getAssetPath("/images/church-welcome-sign.jpg")} 
               alt="Living Hope Lutheran Church welcome sign" 
               class="w-full h-full object-cover"
             >

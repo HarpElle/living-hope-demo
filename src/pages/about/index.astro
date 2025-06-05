@@ -2,6 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
+import { getAssetPath } from '../../utils/paths.js';
 ---
 
 <PageLayout title="About Us" description="Learn about Living Hope Lutheran Church - our mission, vision, and the community that has been serving West Allis since 1966.">
@@ -166,7 +167,7 @@ import Card from '../../components/ui/Card.astro';
           <div class="order-2 md:order-1">
             <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src="/images/church-cross.jpg" 
+                src={getAssetPath("/images/church-cross.jpg")} 
                 alt="Church cross and sanctuary" 
                 class="w-full h-full object-cover"
               >

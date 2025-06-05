@@ -2,6 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
+import { getAssetPath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -126,7 +127,7 @@ import Card from '../../components/ui/Card.astro';
         <div class="mb-12">
           <div class="aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
             <img 
-              src="/images/sancturary-interior.jpg" 
+              src={getAssetPath("/images/sancturary-interior.jpg")} 
               alt="Living Hope Lutheran Church sanctuary interior" 
               class="w-full h-full object-cover"
             >
@@ -196,7 +197,7 @@ import Card from '../../components/ui/Card.astro';
           <!-- Online Worship Image -->
           <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
             <img 
-              src="/images/online-worship.jpg" 
+              src={getAssetPath("/images/online-worship.jpg")} 
               alt="Online worship experience" 
               class="w-full h-full object-cover"
             >
