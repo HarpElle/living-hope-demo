@@ -1,6 +1,7 @@
 ---
 // Header component with navigation
 import SearchBox from '../search/SearchBox.astro';
+import { getAssetPath } from '../../utils/paths.js';
 ---
 
 <header class="fixed top-0 w-full bg-white shadow-md z-50" x-data="{ mobileMenuOpen: false }">
@@ -8,7 +9,7 @@ import SearchBox from '../search/SearchBox.astro';
     <nav class="flex items-center justify-between h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center hover:opacity-80 transition-opacity" aria-label="Living Hope Lutheran Church - Home">
-        <img src="/images/logo.svg" alt="Living Hope Lutheran Church" class="w-12 h-12">
+        <img src={getAssetPath("/images/logo.svg")} alt="Living Hope Lutheran Church" class="w-12 h-12">
         <div class="ml-3">
           <h1 class="text-lg font-semibold text-primary-900">Living Hope</h1>
           <p class="text-xs text-gray-600">Lutheran Church</p>
@@ -95,7 +96,7 @@ import SearchBox from '../search/SearchBox.astro';
       <!-- Mobile Menu Header -->
       <div class="flex items-center justify-between p-4 border-b">
         <a href="/" class="flex items-center hover:opacity-80 transition-opacity" aria-label="Living Hope Lutheran Church - Home" @click="mobileMenuOpen = false">
-          <img src="/images/logo.svg" alt="Living Hope Lutheran Church" class="w-10 h-10">
+          <img src={getAssetPath("/images/logo.svg")} alt="Living Hope Lutheran Church" class="w-10 h-10">
           <div class="ml-3">
             <h2 class="font-semibold text-primary-900">Living Hope</h2>
             <p class="text-xs text-gray-600">Lutheran Church</p>

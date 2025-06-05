@@ -1,3 +1,4 @@
+---
 import { getCollection } from 'astro:content';
 import PageLayout from '../../layouts/PageLayout.astro';
 import Card from '../../components/ui/Card.astro';
@@ -10,6 +11,7 @@ const sortedSermons = sermons.sort((a, b) => b.data.date.getTime() - a.data.date
 // Get unique pastors and series for filtering
 const pastors = [...new Set(sermons.map(sermon => sermon.data.pastor))];
 const series = [...new Set(sermons.map(sermon => sermon.data.series).filter(Boolean))];
+---
 
 <PageLayout 
   title="Sermons - Living Hope Lutheran Church"

@@ -1,6 +1,7 @@
 ---
 // Footer component with contact info and links
 import NewsletterSignup from '../forms/NewsletterSignup.astro';
+import { getAssetPath } from '../../utils/paths.js';
 ---
 
 <footer class="bg-primary-900 text-white">
@@ -21,7 +22,7 @@ import NewsletterSignup from '../forms/NewsletterSignup.astro';
       <!-- Church Info -->
       <div class="md:col-span-1">
         <div class="flex items-center mb-4">
-          <img src="/images/logo-white.svg" alt="Living Hope Lutheran Church" class="w-10 h-10">
+          <img src={getAssetPath("/images/logo-white.svg")} alt="Living Hope Lutheran Church" class="w-10 h-10">
           <div class="ml-3">
             <h3 class="font-semibold">Living Hope</h3>
             <p class="text-sm text-primary-200">Lutheran Church</p>

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://harpelle.github.io',
-  base: '/living-hope-prototype',
+  base: process.env.NODE_ENV === 'production' ? '/living-hope-demo' : undefined,
   integrations: [
     tailwind(),
     sitemap(),

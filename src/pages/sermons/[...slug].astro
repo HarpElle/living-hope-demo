@@ -1,3 +1,4 @@
+---
 import { getCollection } from 'astro:content';
 import PageLayout from '../../layouts/PageLayout.astro';
 import Card from '../../components/ui/Card.astro';
@@ -40,6 +41,7 @@ const relatedContentItems = relatedSermons.map(s => ({
   type: 'sermon' as const,
   date: s.data.date.toISOString()
 }));
+---
 
 <PageLayout 
   title={`${sermon.data.title} - Living Hope Lutheran Church`}
