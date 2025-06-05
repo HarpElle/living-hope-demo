@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPagePath } from '../utils/paths.js';
 ---
 
 <BaseLayout title="Page Not Found">
@@ -12,16 +13,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Perhaps you'd like to visit our homepage instead?
       </p>
       <div class="space-y-4">
-        <a href="/" class="btn-secondary-light btn-lg inline-block">
+        <a href={getPagePath("/")} class="btn-secondary-light btn-lg inline-block">
           Return Home
         </a>
         <div class="text-sm text-primary-200">
           <p>Or try one of these popular pages:</p>
           <div class="mt-2 space-x-4">
-            <a href="/about" class="hover:text-white transition-colors">About Us</a>
-            <a href="/worship/service-times" class="hover:text-white transition-colors">Service Times</a>
-            <a href="/connect/im-new" class="hover:text-white transition-colors">I'm New</a>
-            <a href="/contact" class="hover:text-white transition-colors">Contact</a>
+            <a href={getPagePath("/about")} class="hover:text-white transition-colors">About Us</a>
+            <a href={getPagePath("/worship/service-times")} class="hover:text-white transition-colors">Service Times</a>
+            <a href={getPagePath("/connect/im-new")} class="hover:text-white transition-colors">I'm New</a>
+            <a href={getPagePath("/contact")} class="hover:text-white transition-colors">Contact</a>
           </div>
         </div>
       </div>

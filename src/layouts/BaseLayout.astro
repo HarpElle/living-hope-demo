@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import BackToTop from '../components/navigation/BackToTop.astro';
+import { getAssetPath } from '../utils/paths.js';
 
 const { 
   title, 
@@ -29,11 +30,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:image" content={new URL(image, Astro.site)}>
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+  <link rel="icon" type="image/svg+xml" href={getAssetPath("/favicon.svg")}>
+  <link rel="icon" type="image/x-icon" href={getAssetPath("/favicon.ico")}>
+  <link rel="apple-touch-icon" href={getAssetPath("/apple-touch-icon.png")}>
+  <link rel="icon" type="image/png" sizes="192x192" href={getAssetPath("/icon-192.png")}>
+  <link rel="icon" type="image/png" sizes="512x512" href={getAssetPath("/icon-512.png")}
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
