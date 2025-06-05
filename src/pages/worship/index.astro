@@ -1,0 +1,231 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
+---
+
+<PageLayout 
+  title="Worship - Living Hope Lutheran Church"
+  description="Join us for worship at Living Hope Lutheran Church. Service times: Saturdays 5:00 PM, Sundays 8:00 AM & 10:30 AM, Mondays 6:30 PM. Watch online or visit us in West Allis, WI."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6">
+          Worship With Us
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-200 mb-8">
+          Experience God's love through meaningful worship, inspiring music, and biblical teaching
+        </p>
+                 <p class="text-lg text-primary-200">
+           All are welcome - come as you are!
+         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Times -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Service Times
+          </h2>
+          <p class="text-xl text-gray-600">
+            Multiple opportunities to worship each week
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          
+          <!-- Saturday Service -->
+          <Card variant="elevated" class="text-center">
+            <div class="p-6">
+              <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Saturday</h3>
+              <p class="text-2xl font-bold text-primary-600 mb-2">5:00 PM</p>
+              <p class="text-gray-600 text-sm">Traditional Service</p>
+            </div>
+          </Card>
+
+          <!-- Sunday Early Service -->
+          <Card variant="elevated" class="text-center">
+            <div class="p-6">
+              <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Sunday</h3>
+              <p class="text-2xl font-bold text-primary-600 mb-2">8:00 AM</p>
+              <p class="text-gray-600 text-sm">Traditional Service</p>
+            </div>
+          </Card>
+
+          <!-- Sunday Late Service -->
+          <Card variant="elevated" class="text-center border-2 border-primary-200">
+            <div class="p-6">
+              <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Sunday</h3>
+              <p class="text-2xl font-bold text-primary-600 mb-2">10:30 AM</p>
+              <p class="text-gray-600 text-sm">Contemporary Service</p>
+              <div class="mt-3 px-3 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded-full">
+                Live Streamed
+              </div>
+            </div>
+          </Card>
+
+          <!-- Monday Service -->
+          <Card variant="elevated" class="text-center">
+            <div class="p-6">
+              <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Monday</h3>
+              <p class="text-2xl font-bold text-primary-600 mb-2">6:30 PM</p>
+              <p class="text-gray-600 text-sm">Evening Service</p>
+            </div>
+          </Card>
+        </div>
+
+        <div class="text-center">
+          <Button href="/worship/service-times" variant="primary" size="lg">
+            Learn More About Our Services
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            What to Expect
+          </h2>
+          <p class="text-xl text-gray-600">
+            Your first visit made easy
+          </p>
+        </div>
+
+        <!-- Sanctuary Image -->
+        <div class="mb-12">
+          <div class="aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
+            <img 
+              src="/images/sancturary-interior.jpg" 
+              alt="Living Hope Lutheran Church sanctuary interior" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <Card>
+            <div class="p-8">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Come As You Are</h3>
+              <p class="text-gray-600 mb-4">
+                Whether you're dressed up or dressed down, you're welcome here. Our community values authenticity over appearance.
+              </p>
+              <ul class="text-gray-600 space-y-2">
+                <li>• Casual or formal attire - both are welcome</li>
+                <li>• Arrive a few minutes early to get settled</li>
+                <li>• Greeters will help you find your way</li>
+              </ul>
+            </div>
+          </Card>
+
+          <Card>
+            <div class="p-8">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Worship Experience</h3>
+              <p class="text-gray-600 mb-4">
+                Our services blend traditional Lutheran liturgy with contemporary elements, creating meaningful worship for all ages.
+              </p>
+              <ul class="text-gray-600 space-y-2">
+                <li>• Services typically last 60-75 minutes</li>
+                <li>• Communion offered every Sunday</li>
+                <li>• Children's ministry available</li>
+              </ul>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Online Worship -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          
+          <!-- Content -->
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              Can't Join Us in Person?
+            </h2>
+            <p class="text-xl text-gray-600 mb-6">
+              Watch our Sunday 10:30 AM service live online or catch up with past services anytime.
+            </p>
+            <p class="text-gray-600 mb-8">
+              Our live stream includes the full worship experience - music, message, and community prayers. You can participate from anywhere and still feel connected to our church family.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <Button href="/worship/watch-online" variant="primary" size="lg">
+                Watch Online
+              </Button>
+              <Button href="https://www.youtube.com/@Living.Hope.Lutheran.Church" variant="secondary" size="lg">
+                YouTube Channel
+              </Button>
+            </div>
+          </div>
+
+          <!-- Online Worship Image -->
+          <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
+            <img 
+              src="/images/online-worship.jpg" 
+              alt="Online worship experience" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6">
+          Ready to Join Us?
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          We can't wait to welcome you into our church family. Come experience God's love in action.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/connect/im-new" variant="secondary" size="lg">
+            Plan Your Visit
+          </Button>
+          <Button href="/contact" variant="outline" size="lg">
+            Contact Us
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout> 

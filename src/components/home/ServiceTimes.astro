@@ -1,0 +1,140 @@
+---
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+
+const {
+  title = "Join Us for Worship",
+  subtitle = "All are welcome at Living Hope Lutheran Church",
+  services = [
+    {
+      name: "Saturday Traditional",
+      time: "5:00 PM",
+      description: "Traditional worship with hymns and liturgy",
+      location: "Main Sanctuary",
+      special: false
+    },
+    {
+      name: "Sunday Traditional",
+      time: "8:00 AM",
+      description: "Traditional worship with hymns and liturgy",
+      location: "Main Sanctuary",
+      special: false
+    },
+    {
+      name: "Sunday Contemporary",
+      time: "10:30 AM", 
+      description: "Contemporary worship with praise band",
+      location: "Main Sanctuary",
+      special: false
+    },
+    {
+      name: "Monday Evening",
+      time: "6:30 PM",
+      description: "Evening worship service",
+      location: "Main Sanctuary",
+      special: false
+    }
+  ],
+  specialEvents = [
+    {
+      name: "Christmas Eve Service",
+      time: "7:00 PM & 11:00 PM",
+      date: "December 24th",
+      description: "Candlelight service with special music"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        {title}
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Service Times Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      {services.map((service) => (
+        <Card variant="elevated" class="text-center">
+          <div class="p-6">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">
+              {service.name}
+            </h3>
+            <div class="text-3xl font-extrabold text-primary-600 mb-3">
+              {service.time}
+            </div>
+            <p class="text-gray-600 mb-2">
+              {service.description}
+            </p>
+            <p class="text-sm text-gray-500">
+              {service.location}
+            </p>
+          </div>
+        </Card>
+      ))}
+    </div>
+
+    <!-- Special Events (if any) -->
+    {specialEvents.length > 0 && (
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Special Services</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {specialEvents.map((event) => (
+            <Card variant="elevated" class="text-center border-2 border-primary-200">
+              <div class="p-6">
+                <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                  </svg>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">
+                  {event.name}
+                </h4>
+                <div class="text-lg font-semibold text-primary-600 mb-1">
+                  {event.date}
+                </div>
+                <div class="text-2xl font-bold text-primary-600 mb-3">
+                  {event.time}
+                </div>
+                <p class="text-gray-600 text-sm">
+                  {event.description}
+                </p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Call to Action -->
+    <div class="text-center">
+      <div class="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+          Planning Your First Visit?
+        </h3>
+        <p class="text-gray-600 mb-6">
+          We'd love to welcome you! Learn what to expect and let us know you're coming. You can also join us online for our Sunday 10:30 AM service livestreamed on YouTube.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/connect/im-new" variant="primary" size="lg">
+            Plan Your Visit
+          </Button>
+          <Button href="/worship/watch-online" variant="secondary" size="lg">
+            Watch Online
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

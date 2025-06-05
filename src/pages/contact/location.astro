@@ -1,0 +1,280 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import Button from '../../components/ui/Button.astro';
+---
+
+<PageLayout 
+  title="Location & Directions - Living Hope Lutheran Church"
+  description="Find Living Hope Lutheran Church at 1337 South 100th Street, West Allis, WI 53214. Get directions and parking information."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Find Us
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-100 mb-8">
+          Located in the heart of West Allis, Wisconsin
+        </p>
+        <p class="text-lg text-primary-200">
+          Easy to find with plenty of free parking
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Address & Map -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Address Card -->
+        <Card variant="elevated" class="mb-12">
+          <div class="p-8 text-center">
+            <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-10 h-10 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Address</h2>
+            <div class="text-xl text-gray-600 mb-6">
+              <p class="font-semibold text-gray-900">Living Hope Lutheran Church</p>
+              <p>1337 South 100th Street</p>
+              <p>West Allis, WI 53214</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="https://maps.google.com/?q=1337+South+100th+Street+West+Allis+WI+53214" variant="primary" size="lg" target="_blank">
+                Get Directions
+              </Button>
+              <Button href="tel:414-774-1184" variant="secondary" size="lg">
+                Call Us: 414-774-1184
+              </Button>
+            </div>
+          </div>
+        </Card>
+
+        <!-- Map Placeholder -->
+        <Card variant="elevated" class="mb-12">
+          <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center text-gray-600">
+                <div class="w-24 h-24 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Interactive Map</h3>
+                <p class="text-gray-500 mb-4">1337 South 100th Street, West Allis, WI</p>
+                <p class="text-sm text-gray-400">
+                  Click "Get Directions" above to open in your preferred map app
+                </p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directions & Parking -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Directions & Parking
+          </h2>
+          <p class="text-xl text-gray-600">
+            Everything you need to know for your visit
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          
+          <!-- Driving Directions -->
+          <Card variant="elevated">
+            <div class="p-8">
+              <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Driving Directions</h3>
+              
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-bold text-gray-900 mb-2">From Milwaukee (Downtown)</h4>
+                  <p class="text-gray-600 text-sm">Take I-94 West to Exit 307 (100th Street). Turn south on 100th Street. Church is on the right.</p>
+                </div>
+                
+                <div>
+                  <h4 class="font-bold text-gray-900 mb-2">From Madison</h4>
+                  <p class="text-gray-600 text-sm">Take I-94 East to Exit 307 (100th Street). Turn south on 100th Street. Church is on the right.</p>
+                </div>
+                
+                <div>
+                  <h4 class="font-bold text-gray-900 mb-2">From Waukesha</h4>
+                  <p class="text-gray-600 text-sm">Take I-94 East to Exit 307 (100th Street). Turn south on 100th Street. Church is on the right.</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <!-- Parking Information -->
+          <Card variant="elevated">
+            <div class="p-8">
+              <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2v0a2 2 0 01-2-2v-1M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Parking Information</h3>
+              
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-start">
+                  <span class="text-primary-600 mr-2">•</span>
+                  <span><strong>Free parking</strong> available in our large lot</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-600 mr-2">•</span>
+                  <span><strong>Accessible parking</strong> spaces near main entrance</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-600 mr-2">•</span>
+                  <span><strong>Overflow parking</strong> available on nearby streets</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-600 mr-2">•</span>
+                  <span><strong>Well-lit</strong> parking area for evening services</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-primary-600 mr-2">•</span>
+                  <span><strong>Snow removal</strong> maintained in winter months</span>
+                </li>
+              </ul>
+            </div>
+          </Card>
+        </div>
+
+        <!-- Accessibility & Transportation -->
+        <div class="grid md:grid-cols-3 gap-6">
+          
+          <!-- Accessibility -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Accessibility</h3>
+              <p class="text-gray-600 text-sm">
+                Wheelchair accessible entrance, restrooms, and seating areas available
+              </p>
+            </div>
+          </Card>
+
+          <!-- Public Transit -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Public Transit</h3>
+              <p class="text-gray-600 text-sm">
+                MCTS bus routes serve the area. Check current schedules and routes online
+              </p>
+            </div>
+          </Card>
+
+          <!-- Nearby Landmarks -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Nearby Landmarks</h3>
+              <p class="text-gray-600 text-sm">
+                Close to West Allis City Hall and Nathan Hale High School
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Times Reminder -->
+  <section class="py-16 bg-primary-600 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold mb-4">
+            Service Times
+          </h2>
+          <p class="text-xl text-primary-100">
+            Plan your visit around our worship schedule
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Saturday -->
+          <Card class="bg-white/10 border-white/20 text-center">
+            <div class="p-4">
+              <h3 class="font-bold text-white mb-1">Saturday</h3>
+              <p class="text-primary-100 text-sm mb-1">5:00 PM</p>
+              <p class="text-primary-200 text-xs">Traditional</p>
+            </div>
+          </Card>
+
+          <!-- Sunday Early -->
+          <Card class="bg-white/10 border-white/20 text-center">
+            <div class="p-4">
+              <h3 class="font-bold text-white mb-1">Sunday</h3>
+              <p class="text-primary-100 text-sm mb-1">8:00 AM</p>
+              <p class="text-primary-200 text-xs">Traditional</p>
+            </div>
+          </Card>
+
+          <!-- Sunday Contemporary -->
+          <Card class="bg-white/10 border-white/20 text-center">
+            <div class="p-4">
+              <h3 class="font-bold text-white mb-1">Sunday</h3>
+              <p class="text-primary-100 text-sm mb-1">10:30 AM</p>
+              <p class="text-primary-200 text-xs">Contemporary</p>
+            </div>
+          </Card>
+
+          <!-- Monday -->
+          <Card class="bg-white/10 border-white/20 text-center">
+            <div class="p-4">
+              <h3 class="font-bold text-white mb-1">Monday</h3>
+              <p class="text-primary-100 text-sm mb-1">6:30 PM</p>
+              <p class="text-primary-200 text-xs">Evening Service</p>
+            </div>
+          </Card>
+        </div>
+
+        <div class="text-center mt-8">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="/worship/service-times" variant="secondary" size="lg">
+              View Full Schedule
+            </Button>
+            <Button href="/connect/im-new" variant="outline" size="lg">
+              Plan Your Visit
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout> 

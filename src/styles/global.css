@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Typography improvements for better line breaks */
+@layer base {
+  /* Improve text wrapping and prevent awkward breaks */
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    word-break: normal;
+    hyphens: none;
+  }
+  
+  /* Better line height for large text */
+  .text-4xl, .text-5xl, .text-6xl, .text-7xl {
+    line-height: 1.1;
+  }
+  
+  /* Prevent orphans and widows in paragraphs */
+  p {
+    orphans: 2;
+    widows: 2;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  @apply absolute -top-10 left-4 bg-primary-700 text-white px-4 py-2 rounded;
+  @apply focus:top-4 transition-all duration-200 z-50;
+}
+
+/* Custom component styles */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-700 hover:bg-primary-800 text-white font-semibold py-3 px-6 rounded-lg;
+    @apply transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-primary-700 font-semibold py-3 px-6 rounded-lg border border-primary-700;
+    @apply transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary-light {
+    @apply bg-white/20 hover:bg-white/30 text-white font-semibold py-3 px-6 rounded-lg border border-white/30;
+    @apply transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+  }
+  
+  .btn-lg {
+    @apply py-4 px-8 text-lg;
+  }
+  
+  .nav-link {
+    @apply text-gray-700 hover:text-primary-700 font-medium transition-colors duration-200 relative;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 transition-all duration-200;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+} 

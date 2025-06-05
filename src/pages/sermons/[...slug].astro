@@ -1,0 +1,204 @@
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import Button from '../../components/ui/Button.astro';
+import Breadcrumbs from '../../components/navigation/Breadcrumbs.astro';
+import RelatedContent from '../../components/navigation/RelatedContent.astro';
+
+export async function getStaticPaths() {
+  const sermons = await getCollection('sermons');
+  return sermons.map((sermon) => ({
+    params: { slug: sermon.slug },
+    props: { sermon },
+  }));
+}
+
+const { sermon } = Astro.props;
+const { Content } = await sermon.render();
+
+// Get related sermons (same pastor or series)
+const allSermons = await getCollection('sermons');
+const relatedSermons = allSermons
+  .filter(s => s.slug !== sermon.slug && (
+    s.data.pastor === sermon.data.pastor || 
+    s.data.series === sermon.data.series
+  ))
+  .slice(0, 3);
+
+// Prepare breadcrumb items
+const breadcrumbItems = [
+  { label: 'Worship', href: '/worship' },
+  { label: 'Sermons', href: '/worship/sermons' },
+  { label: sermon.data.title, current: true }
+];
+
+// Prepare related content for RelatedContent component
+const relatedContentItems = relatedSermons.map(s => ({
+  title: s.data.title,
+  description: s.data.description,
+  href: `/sermons/${s.slug}`,
+  type: 'sermon' as const,
+  date: s.data.date.toISOString()
+}));
+
+<PageLayout 
+  title={`${sermon.data.title} - Living Hope Lutheran Church`}
+  description={sermon.data.description}
+>
+  <!-- Breadcrumbs -->
+  <section class="py-4 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-6">
+          {sermon.data.series && (
+            <span class="inline-block bg-white/20 text-white text-sm px-3 py-1 rounded-full mb-4">
+              {sermon.data.series}
+            </span>
+          )}
+          <p class="text-primary-200">
+            {sermon.data.date.toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })} • {sermon.data.pastor}
+          </p>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          {sermon.data.title}
+        </h1>
+        <p class="text-xl text-primary-100 mb-8">
+          {sermon.data.description}
+        </p>
+        <p class="text-lg text-primary-200">
+          <strong>Scripture:</strong> {sermon.data.scripture}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video/Audio Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Video Player -->
+        {sermon.data.videoUrl && (
+          <Card variant="elevated" class="mb-8">
+            <div class="aspect-video bg-gray-900 rounded-lg overflow-hidden relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white">
+                  <div class="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Watch Sermon</h3>
+                  <p class="text-gray-300 mb-4">{sermon.data.title}</p>
+                  <Button href={sermon.data.videoUrl} variant="secondary" target="_blank">
+                    Watch on YouTube
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Card>
+        )}
+
+        <!-- Audio Player -->
+        {sermon.data.audioUrl && (
+          <Card class="mb-8">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Listen to Audio</h3>
+              <div class="bg-gray-100 rounded-lg p-4">
+                <p class="text-gray-600 text-center">Audio player would be embedded here</p>
+                <div class="text-center mt-4">
+                  <Button href={sermon.data.audioUrl} variant="primary" target="_blank">
+                    Download Audio
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Card>
+        )}
+
+        <!-- Sermon Tags -->
+        {sermon.data.tags && sermon.data.tags.length > 0 && (
+          <div class="mb-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Topics</h3>
+            <div class="flex flex-wrap gap-2">
+              {sermon.data.tags.map(tag => (
+                <span class="inline-block bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sermon Content -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <Card variant="elevated">
+          <div class="p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Sermon Notes</h2>
+            <div class="prose prose-lg max-w-none">
+              <Content />
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Sermons -->
+  {relatedContentItems.length > 0 && (
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <RelatedContent 
+            title="Related Sermons"
+            items={relatedContentItems}
+            maxItems={3}
+            variant="grid"
+          />
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6">
+          Join Us for Worship
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          Experience these messages in person during our weekly services
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/worship/service-times" variant="secondary" size="lg">
+            Service Times
+          </Button>
+          <Button href="/sermons" variant="outline" size="lg">
+            More Sermons
+          </Button>
+          <Button href="/connect/im-new" variant="outline" size="lg">
+            Plan Your Visit
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout> 

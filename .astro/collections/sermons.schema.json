@@ -1,0 +1,73 @@
+{
+  "$ref": "#/definitions/sermons",
+  "definitions": {
+    "sermons": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "pastor": {
+          "type": "string"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "series": {
+          "type": "string"
+        },
+        "scripture": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "videoUrl": {
+          "type": "string"
+        },
+        "audioUrl": {
+          "type": "string"
+        },
+        "transcript": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "pastor",
+        "date",
+        "scripture",
+        "description"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

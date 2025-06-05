@@ -1,0 +1,160 @@
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+
+interface RelatedItem {
+  title: string;
+  description: string;
+  href: string;
+  type?: 'sermon' | 'event' | 'page' | 'staff';
+  date?: string;
+  image?: string;
+}
+
+interface Props {
+  title?: string;
+  items: RelatedItem[];
+  maxItems?: number;
+  variant?: 'grid' | 'list';
+  class?: string;
+}
+
+const { 
+  title = "Related Content",
+  items,
+  maxItems = 3,
+  variant = 'grid',
+  class: className = ""
+} = Astro.props;
+
+const displayItems = items.slice(0, maxItems);
+
+const getTypeIcon = (type: string) => {
+  switch (type) {
+    case 'sermon':
+      return `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+      </svg>`;
+    case 'event':
+      return `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+      </svg>`;
+    case 'staff':
+      return `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+      </svg>`;
+    default:
+      return `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>`;
+  }
+};
+
+const getTypeColor = (type: string) => {
+  switch (type) {
+    case 'sermon':
+      return 'bg-primary-100 text-primary-600';
+    case 'event':
+      return 'bg-secondary-100 text-secondary-600';
+    case 'staff':
+      return 'bg-accent-100 text-accent-600';
+    default:
+      return 'bg-gray-100 text-gray-600';
+  }
+};
+
+{displayItems.length > 0 && (
+  <section class={`related-content ${className}`}>
+    <div class="mb-6">
+      <h2 class="text-2xl font-bold text-gray-900">{title}</h2>
+    </div>
+    
+    <div class={variant === 'grid' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
+      {displayItems.map((item) => (
+        <Card variant="elevated" class="hover:shadow-lg transition-shadow">
+          <div class={variant === 'grid' ? 'p-6' : 'p-4'}>
+            
+            {/* Type Badge and Date */}
+            <div class="flex items-center justify-between mb-3">
+              {item.type && (
+                <div class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getTypeColor(item.type)}`}>
+                  <span class="mr-1" set:html={getTypeIcon(item.type)}></span>
+                  {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                </div>
+              )}
+              {item.date && (
+                <span class="text-sm text-gray-500">
+                  {new Date(item.date).toLocaleDateString()}
+                </span>
+              )}
+            </div>
+            
+            {/* Content */}
+            <div class="mb-4">
+              <h3 class={`font-bold text-gray-900 mb-2 ${variant === 'grid' ? 'text-lg' : 'text-base'}`}>
+                <a href={item.href} class="hover:text-primary-600 transition-colors">
+                  {item.title}
+                </a>
+              </h3>
+              <p class={`text-gray-600 ${variant === 'grid' ? 'text-sm' : 'text-xs'}`}>
+                {item.description}
+              </p>
+            </div>
+            
+            {/* Action Button */}
+            <div class="flex justify-between items-center">
+              <Button 
+                href={item.href} 
+                variant="primary" 
+                size={variant === 'grid' ? 'sm' : 'xs'}
+              >
+                {item.type === 'sermon' ? 'Listen' : 
+                 item.type === 'event' ? 'View Event' : 
+                 item.type === 'staff' ? 'View Profile' : 'Read More'}
+              </Button>
+              
+              {/* Quick Action Icon */}
+              <a 
+                href={item.href}
+                class="text-gray-400 hover:text-primary-600 transition-colors"
+                aria-label={`Go to ${item.title}`}
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+    
+    {/* View All Link */}
+    {items.length > maxItems && (
+      <div class="mt-6 text-center">
+        <Button 
+          href={
+            displayItems[0]?.type === 'sermon' ? '/worship/sermons' :
+            displayItems[0]?.type === 'event' ? '/events' :
+            displayItems[0]?.type === 'staff' ? '/about/staff' :
+            '/search'
+          }
+          variant="secondary"
+        >
+          View All {displayItems[0]?.type ? displayItems[0].type.charAt(0).toUpperCase() + displayItems[0].type.slice(1) + 's' : 'Content'}
+        </Button>
+      </div>
+    )}
+  </section>
+)}
+
+<style>
+  .related-content {
+    /* Ensure consistent spacing */
+  }
+  
+  @media (max-width: 768px) {
+    .related-content .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 

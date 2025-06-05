@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import BackToTop from '../components/navigation/BackToTop.astro';
+
+const { 
+  title, 
+  description = "Living Hope Lutheran Church - A community of faith serving West Allis since 1966",
+  image = "/og-image.jpg" 
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content={Astro.generator}>
+  
+  <title>{title} | Living Hope Lutheran Church</title>
+  <meta name="description" content={description}>
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={new URL(image, Astro.site)}>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Church",
+      "name": "Living Hope Lutheran Church",
+      "description": "A community of faith serving West Allis since 1966",
+      "url": "https://www.livinghopelutheran.org",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1337 South 100th Street",
+        "addressLocality": "West Allis",
+        "addressRegion": "WI",
+        "postalCode": "53214",
+        "addressCountry": "US"
+      },
+      "telephone": "414-774-1184",
+      "email": "church@livinghopelutheran.org"
+    }
+  </script>
+  
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="font-body text-gray-900 bg-white">
+  <!-- Skip to main content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <slot />
+  
+  <!-- Back to Top Component -->
+  <BackToTop />
+</body>
+</html> 

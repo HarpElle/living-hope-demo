@@ -1,0 +1,268 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
+---
+
+<PageLayout title="About Us" description="Learn about Living Hope Lutheran Church - our mission, vision, and the community that has been serving West Allis since 1966.">
+  
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-6">
+          Welcome to Our Church Family
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-200 mb-8">
+          Discover our story, mission, and the community that has been sharing God's love in West Allis for over 55 years
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pastor's Welcome -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        
+        <!-- Pastoral Team Image -->
+        <div class="order-2 lg:order-1">
+          <div class="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
+            <!-- Placeholder for pastoral team image -->
+            <div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
+              <div class="text-center text-primary-600">
+                <svg class="w-20 h-20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                <p class="font-medium text-lg">Our Pastoral Team</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pastoral Team Message -->
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+            A Message from<br class="hidden sm:inline"> Our Pastoral Team
+          </h2>
+          
+          <div class="prose prose-lg text-gray-600 mb-8">
+            <p class="text-xl leading-relaxed mb-6">
+              "Welcome to Living Hope Lutheran Church! Whether you're exploring faith for the first time or looking for a new church home, we're so glad you're here."
+            </p>
+            
+            <p class="mb-6">
+              For over five decades, our congregation has been a beacon of hope and love in the West Allis community. We believe that everyone—regardless of where they are in their faith journey—has a place at God's table and in our church family.
+            </p>
+            
+            <p class="mb-6">
+              At Living Hope, you'll find a community that celebrates both tradition and innovation. We honor the rich heritage of WELS Lutheran worship while embracing meaningful ways to connect with God and serve our neighbors. Our ministries include Bible studies for all ages, women's programs, men's ministry, youth activities, and special needs ministry.
+            </p>
+            
+            <p>
+              Our pastoral team is here to serve you and help you discover how God might be calling you to grow in faith and service. We invite you to join us for worship, connect with our community, and experience God's love in action.
+            </p>
+          </div>
+
+          <div class="bg-primary-50 rounded-xl p-6 mb-8">
+            <p class="text-primary-700 italic font-medium">
+              "To share God's love through worship, service, and community"
+            </p>
+            <p class="text-primary-600 text-sm mt-2">- Living Hope Lutheran Church Mission</p>
+          </div>
+
+          <Button href="/about/staff" variant="primary" size="lg">
+            Meet Our Pastoral Team
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission, Vision & Values -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Our Mission, Vision<br class="hidden sm:inline"> & Values
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          These core principles guide everything we do as a community of faith
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        
+        <!-- Mission -->
+        <Card variant="elevated" class="text-center h-full">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+            <p class="text-gray-600 leading-relaxed">
+              To share God's love through worship, service, and community, welcoming all people to grow in faith and discipleship.
+            </p>
+          </div>
+        </Card>
+
+        <!-- Vision -->
+        <Card variant="elevated" class="text-center h-full">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+            <p class="text-gray-600 leading-relaxed">
+              To be a thriving community where all people experience God's grace, find their purpose, and make a positive impact in the world.
+            </p>
+          </div>
+        </Card>
+
+        <!-- Values -->
+        <Card variant="elevated" class="text-center h-full">
+          <div class="p-8">
+            <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Values</h3>
+            <div class="text-gray-600 leading-relaxed text-left">
+              <ul class="space-y-2">
+                <li>• <strong>Grace:</strong> God's unconditional love</li>
+                <li>• <strong>Welcome:</strong> All are invited</li>
+                <li>• <strong>Service:</strong> Love in action</li>
+                <li>• <strong>Growth:</strong> Lifelong learning</li>
+                <li>• <strong>Community:</strong> Together in faith</li>
+              </ul>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Church History -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">
+            Our Story
+          </h2>
+          <p class="text-xl text-gray-600">
+            Over 55 years of faithful service to the West Allis community
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Church History Image -->
+          <div class="order-2 md:order-1">
+            <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+              <img 
+                src="/images/church-cross.jpg" 
+                alt="Church cross and sanctuary" 
+                class="w-full h-full object-cover"
+              >
+            </div>
+          </div>
+          
+          <div class="order-1 md:order-2">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Founded in Faith</h3>
+            <p class="text-gray-600 mb-6">
+              Living Hope Lutheran Church was established in 1966 by a small group of families who felt called to create a welcoming Lutheran community in West Allis. What began as a handful of believers meeting in homes has grown into a vibrant congregation of over 300 members.
+            </p>
+            
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Growing in Grace</h3>
+            <p class="text-gray-600 mb-6">
+              Throughout the decades, we've remained committed to our founding principles while adapting to serve our changing community. We've weathered challenges, celebrated milestones, and consistently focused on being a place where all people can encounter God's love.
+            </p>
+
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Looking Forward</h3>
+            <p class="text-gray-600">
+              As we look to the future, we're excited about new opportunities to serve, grow, and make a positive impact in West Allis and beyond. Our best days are still ahead!
+            </p>
+          </div>
+        </div>
+        
+        <!-- Timeline Section -->
+        <div class="mt-16">
+          <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Our Journey</h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-primary-600 font-bold">1966</span>
+                </div>
+                <h4 class="font-semibold text-gray-900">Church Founded</h4>
+              </div>
+              <p class="text-gray-600 text-sm">Small group begins meeting in homes</p>
+            </Card>
+
+            <Card class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-primary-600 font-bold">1972</span>
+                </div>
+                <h4 class="font-semibold text-gray-900">First Building</h4>
+              </div>
+              <p class="text-gray-600 text-sm">Sanctuary and fellowship hall constructed</p>
+            </Card>
+
+            <Card class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-primary-600 font-bold">1995</span>
+                </div>
+                <h4 class="font-semibold text-gray-900">Major Renovation</h4>
+              </div>
+              <p class="text-gray-600 text-sm">Expanded facilities and modernized worship space</p>
+            </Card>
+
+            <Card class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-primary-600 font-bold">2020</span>
+                </div>
+                <h4 class="font-semibold text-gray-900">Digital Ministry</h4>
+              </div>
+              <p class="text-gray-600 text-sm">Launched online worship and virtual community</p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-primary-50">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">
+          Ready to Learn More?
+        </h2>
+        <p class="text-xl text-gray-600 mb-8">
+          We'd love to connect with you and answer any questions you might have about our church family.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/connect/im-new" variant="primary" size="lg">
+            Plan Your Visit
+          </Button>
+          <Button href="/about/staff" variant="secondary" size="lg">
+            Meet Our Team
+          </Button>
+          <Button href="/contact" variant="secondary" size="lg">
+            Contact Us
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout> 

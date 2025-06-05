@@ -1,0 +1,287 @@
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import Button from '../../components/ui/Button.astro';
+import Breadcrumbs from '../../components/navigation/Breadcrumbs.astro';
+
+// Get all events and sort by date
+const events = await getCollection('events');
+const sortedEvents = events.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+// Separate upcoming and past events
+const now = new Date();
+const upcomingEvents = sortedEvents.filter(event => event.data.date >= now);
+const featuredEvents = upcomingEvents.filter(event => event.data.featured);
+
+// Get unique categories for filtering
+const categories = [...new Set(events.map(event => event.data.category))];
+
+// Breadcrumb items
+const breadcrumbItems = [
+  { label: 'Connect', href: '/connect' },
+  { label: 'Events', current: true }
+];
+
+<PageLayout 
+  title="Events & Programs - Living Hope Lutheran Church"
+  description="Join us for upcoming events, programs, and activities at Living Hope Lutheran Church. From worship services to fellowship events and educational programs."
+>
+  <!-- Breadcrumbs -->
+  <section class="py-4 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6">
+          Events & Programs
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-100 mb-8">
+          Join us for worship, fellowship, and growth opportunities
+        </p>
+        <p class="text-lg text-primary-200">
+          Something for everyone in our church family
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Events -->
+  {featuredEvents.length > 0 && (
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              Featured Events
+            </h2>
+            <p class="text-xl text-gray-600">
+              Don't miss these special upcoming events
+            </p>
+          </div>
+
+          <!-- Church Event Image -->
+          <div class="mb-12">
+            <div class="aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
+              <img 
+                src="/images/church-event.jpg" 
+                alt="Church event and community gathering" 
+                class="w-full h-full object-cover"
+              >
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredEvents.slice(0, 3).map(event => (
+              <Card variant="elevated" class="h-full">
+                <div class="p-6">
+                  <div class="mb-4">
+                    <span class={`inline-block text-xs px-2 py-1 rounded-full mb-2 ${
+                      event.data.category === 'worship' ? 'bg-primary-100 text-primary-800' :
+                      event.data.category === 'fellowship' ? 'bg-secondary-100 text-secondary-800' :
+                      event.data.category === 'education' ? 'bg-accent-100 text-accent-800' :
+                      event.data.category === 'service' ? 'bg-green-100 text-green-800' :
+                      'bg-purple-100 text-purple-800'
+                    }`}>
+                      {event.data.category.charAt(0).toUpperCase() + event.data.category.slice(1)}
+                    </span>
+                    <p class="text-gray-600 text-sm">
+                      {event.data.date.toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                      })} • {event.data.time}
+                    </p>
+                  </div>
+                  
+                  <h3 class="text-xl font-bold text-gray-900 mb-2">{event.data.title}</h3>
+                  <p class="text-gray-600 text-sm mb-3">{event.data.location}</p>
+                  <p class="text-gray-600 text-sm mb-4">{event.data.description}</p>
+                  
+                  <div class="mt-auto">
+                    {event.data.registrationRequired && (
+                      <p class="text-xs text-orange-600 mb-3">
+                        <strong>Registration Required</strong>
+                      </p>
+                    )}
+                    <Button href={`/events/${event.slug}`} variant="primary" size="sm">
+                      Learn More
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- All Events -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            All Events & Programs
+          </h2>
+          <p class="text-xl text-gray-600">
+            Browse our complete calendar of activities
+          </p>
+        </div>
+
+        <!-- Filter Options -->
+        <Card class="mb-8">
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Filter Events</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500">
+                  <option value="">All Categories</option>
+                  {categories.map(category => (
+                    <option value={category}>
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Time Period</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500">
+                  <option value="">All Events</option>
+                  <option value="upcoming">Upcoming Events</option>
+                  <option value="this-week">This Week</option>
+                  <option value="this-month">This Month</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Registration</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500">
+                  <option value="">All Events</option>
+                  <option value="required">Registration Required</option>
+                  <option value="not-required">No Registration Needed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        <!-- Events List -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {upcomingEvents.map(event => (
+            <Card variant="elevated" class="h-full">
+              <div class="p-6">
+                <div class="mb-4">
+                  <span class={`inline-block text-xs px-2 py-1 rounded-full mb-2 ${
+                    event.data.category === 'worship' ? 'bg-primary-100 text-primary-800' :
+                    event.data.category === 'fellowship' ? 'bg-secondary-100 text-secondary-800' :
+                    event.data.category === 'education' ? 'bg-accent-100 text-accent-800' :
+                    event.data.category === 'service' ? 'bg-green-100 text-green-800' :
+                    'bg-purple-100 text-purple-800'
+                  }`}>
+                    {event.data.category.charAt(0).toUpperCase() + event.data.category.slice(1)}
+                  </span>
+                  <p class="text-gray-600 text-sm">
+                    {event.data.date.toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'short', 
+                      day: 'numeric' 
+                    })} • {event.data.time}
+                  </p>
+                </div>
+                
+                <h3 class="text-lg font-bold text-gray-900 mb-2">{event.data.title}</h3>
+                <p class="text-gray-600 text-sm mb-3">
+                  📍 {event.data.location}
+                </p>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">{event.data.description}</p>
+                
+                <div class="mt-auto">
+                  {event.data.registrationRequired && (
+                    <p class="text-xs text-orange-600 mb-3">
+                      <strong>Registration Required</strong>
+                    </p>
+                  )}
+                  {event.data.recurring && (
+                    <p class="text-xs text-blue-600 mb-3">
+                      <strong>Recurring Event</strong>
+                    </p>
+                  )}
+                  <div class="flex gap-2">
+                    <Button href={`/events/${event.slug}`} variant="primary" size="sm">
+                      Details
+                    </Button>
+                    {event.data.contact && (
+                      <Button href={`mailto:${event.data.contact}`} variant="secondary" size="sm">
+                        Contact
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        <!-- Regular Programs Highlight -->
+        <Card class="mt-12 bg-primary-50 border-primary-200">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+              Regular Weekly Programs
+            </h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="text-center">
+                <h4 class="font-bold text-gray-900 mb-2">Sunday Morning Kids Club</h4>
+                <p class="text-gray-600 text-sm mb-1">Every Sunday, 10:30 AM</p>
+                <p class="text-gray-600 text-xs">Children's Ministry Room</p>
+              </div>
+              <div class="text-center">
+                <h4 class="font-bold text-gray-900 mb-2">Wednesday Bible Study</h4>
+                <p class="text-gray-600 text-sm mb-1">Every Wednesday, 7:00 PM</p>
+                <p class="text-gray-600 text-xs">Fellowship Hall</p>
+              </div>
+              <div class="text-center">
+                <h4 class="font-bold text-gray-900 mb-2">Youth Group</h4>
+                <p class="text-gray-600 text-sm mb-1">Sunday evenings, 6:00 PM</p>
+                <p class="text-gray-600 text-xs">Youth Room</p>
+              </div>
+              <div class="text-center">
+                <h4 class="font-bold text-gray-900 mb-2">Pioneer Program</h4>
+                <p class="text-gray-600 text-sm mb-1">Various times</p>
+                <p class="text-gray-600 text-xs">Children's Ministry Rooms</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6">
+          Get Involved
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          Join us for any of these events and programs. Everyone is welcome!
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/connect/im-new" variant="secondary" size="lg">
+            Plan Your Visit
+          </Button>
+          <Button href="/contact" variant="outline" size="lg">
+            Contact Us
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout> 

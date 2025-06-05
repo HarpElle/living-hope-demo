@@ -1,0 +1,324 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Card from '../../components/ui/Card.astro';
+import Button from '../../components/ui/Button.astro';
+---
+
+<PageLayout 
+  title="Prayer Request - Living Hope Lutheran Church"
+  description="Submit a prayer request to Living Hope Lutheran Church. Our pastoral team and prayer ministry will lift up your needs in prayer."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Prayer Request
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-100 mb-8">
+          We believe in the power of prayer and would be honored to pray for you
+        </p>
+        <p class="text-lg text-primary-200">
+          "Therefore confess your sins to each other and pray for each other so that you may be healed. The prayer of a righteous person is powerful and effective." - James 5:16
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prayer Request Form -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12">
+          
+          <!-- Form -->
+          <Card variant="elevated">
+            <div class="p-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-6">Submit Your Prayer Request</h2>
+              
+              <form class="space-y-6" id="prayer-form">
+                <!-- Success/Error Messages -->
+                <div id="prayer-messages" class="hidden">
+                  <div id="prayer-success" class="hidden bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+                    <div class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Thank you! Your prayer request has been received and will be lifted up in prayer.</span>
+                    </div>
+                  </div>
+                  <div id="prayer-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                    <div class="flex items-center">
+                      <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>There was an error submitting your prayer request. Please try again.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">
+                      First Name *
+                    </label>
+                    <input 
+                      type="text" 
+                      id="firstName" 
+                      name="firstName" 
+                      required 
+                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    >
+                  </div>
+                  <div>
+                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name
+                    </label>
+                    <input 
+                      type="text" 
+                      id="lastName" 
+                      name="lastName" 
+                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    >
+                  </div>
+                </div>
+
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address (optional)
+                  </label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    placeholder="your.email@example.com"
+                  >
+                  <p class="text-sm text-gray-500 mt-1">Optional - only if you'd like a response</p>
+                </div>
+
+                <div>
+                  <label for="requestType" class="block text-sm font-medium text-gray-700 mb-2">
+                    Type of Request *
+                  </label>
+                  <select 
+                    id="requestType" 
+                    name="requestType" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  >
+                    <option value="">Select a type</option>
+                    <option value="healing">Healing & Health</option>
+                    <option value="family">Family & Relationships</option>
+                    <option value="work">Work & Financial</option>
+                    <option value="spiritual">Spiritual Growth</option>
+                    <option value="grief">Grief & Loss</option>
+                    <option value="thanksgiving">Thanksgiving & Praise</option>
+                    <option value="guidance">Guidance & Decisions</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="prayerRequest" class="block text-sm font-medium text-gray-700 mb-2">
+                    Prayer Request *
+                  </label>
+                  <textarea 
+                    id="prayerRequest" 
+                    name="prayerRequest" 
+                    rows="6" 
+                    required
+                    placeholder="Please share your prayer request. You may include as much or as little detail as you're comfortable with."
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-vertical"
+                  ></textarea>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-3">
+                    Privacy Preferences *
+                  </label>
+                  <div class="space-y-3">
+                    <div class="flex items-start">
+                      <input 
+                        type="radio" 
+                        id="private" 
+                        name="privacy" 
+                        value="private"
+                        class="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
+                        checked
+                      >
+                      <label for="private" class="ml-3 text-sm text-gray-700">
+                        <strong>Private</strong> - Only our pastoral team will pray for this request
+                      </label>
+                    </div>
+                    <div class="flex items-start">
+                      <input 
+                        type="radio" 
+                        id="prayer-list" 
+                        name="privacy" 
+                        value="prayer-list"
+                        class="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
+                      >
+                      <label for="prayer-list" class="ml-3 text-sm text-gray-700">
+                        <strong>Prayer List</strong> - Include in our church prayer list (first name only)
+                      </label>
+                    </div>
+                    <div class="flex items-start">
+                      <input 
+                        type="radio" 
+                        id="public" 
+                        name="privacy" 
+                        value="public"
+                        class="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
+                      >
+                      <label for="public" class="ml-3 text-sm text-gray-700">
+                        <strong>Public</strong> - May be shared with our prayer ministry team
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <input 
+                    type="checkbox" 
+                    id="updates" 
+                    name="updates" 
+                    class="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                  >
+                  <label for="updates" class="ml-3 text-sm text-gray-600">
+                    I'd like to receive updates about prayer ministry and opportunities to pray for others
+                  </label>
+                </div>
+
+                <button 
+                  type="submit" 
+                  class="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                  id="prayer-submit"
+                >
+                  <span id="prayer-submit-text">Submit Prayer Request</span>
+                  <span id="prayer-loading" class="hidden">Submitting...</span>
+                </button>
+              </form>
+            </div>
+          </Card>
+
+          <!-- Information -->
+          <div class="space-y-8">
+            
+            <!-- About Prayer Ministry -->
+            <Card>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Our Prayer Ministry</h3>
+                <p class="text-gray-600 mb-4">
+                  At Living Hope Lutheran Church, we believe prayer is one of the most powerful ways we can support one another. Our pastoral team and prayer ministry are committed to lifting up your needs before God.
+                </p>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                  <li class="flex items-start">
+                    <span class="text-primary-600 mr-2">•</span>
+                    All prayer requests are treated with confidentiality and respect
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary-600 mr-2">•</span>
+                    Our pastoral team prays for all requests during their weekly prayer time
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary-600 mr-2">•</span>
+                    You may submit requests anonymously if preferred
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-primary-600 mr-2">•</span>
+                    Follow-up is available if you provide contact information
+                  </li>
+                </ul>
+              </div>
+            </Card>
+
+            <!-- Emergency Contact -->
+            <Card class="bg-red-50 border-red-200">
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-red-800 mb-4">Urgent Prayer Needs</h3>
+                <p class="text-red-700 mb-4">
+                  For urgent prayer needs or pastoral care emergencies, please contact our church office directly:
+                </p>
+                <div class="space-y-2">
+                  <p class="text-red-600 font-medium">📞 414-774-1184</p>
+                  <p class="text-red-600 font-medium">✉️ church@livinghopelutheran.org</p>
+                </div>
+              </div>
+            </Card>
+
+            <!-- Scripture Encouragement -->
+            <Card class="bg-primary-50 border-primary-200">
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-primary-800 mb-4">God Hears Your Prayers</h3>
+                <blockquote class="text-primary-700 italic mb-4">
+                  "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus."
+                </blockquote>
+                <p class="text-primary-600 text-sm">- Philippians 4:6-7</p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('prayer-form');
+    const submitButton = document.getElementById('prayer-submit');
+    const submitText = document.getElementById('prayer-submit-text');
+    const loadingText = document.getElementById('prayer-loading');
+    const messages = document.getElementById('prayer-messages');
+    const successMessage = document.getElementById('prayer-success');
+    const errorMessage = document.getElementById('prayer-error');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Basic validation
+      const firstName = document.getElementById('firstName').value.trim();
+      const requestType = document.getElementById('requestType').value;
+      const prayerRequest = document.getElementById('prayerRequest').value.trim();
+      
+      if (!firstName || !requestType || !prayerRequest) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      // Show loading state
+      submitButton.disabled = true;
+      submitText.classList.add('hidden');
+      loadingText.classList.remove('hidden');
+
+      try {
+        // Simulate form submission
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Show success message
+        messages.classList.remove('hidden');
+        successMessage.classList.remove('hidden');
+        errorMessage.classList.add('hidden');
+        
+        // Reset form
+        form.reset();
+        
+        // Scroll to success message
+        messages.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+      } catch (error) {
+        // Show error message
+        messages.classList.remove('hidden');
+        errorMessage.classList.remove('hidden');
+        successMessage.classList.add('hidden');
+      } finally {
+        // Reset button state
+        submitButton.disabled = false;
+        submitText.classList.remove('hidden');
+        loadingText.classList.add('hidden');
+      }
+    });
+  });
+</script> 

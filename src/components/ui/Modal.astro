@@ -1,0 +1,158 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  showCloseButton?: boolean;
+  class?: string;
+}
+
+const { 
+  id,
+  title,
+  size = 'md',
+  showCloseButton = true,
+  class: className = ""
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'max-w-md',
+  md: 'max-w-lg',
+  lg: 'max-w-2xl',
+  xl: 'max-w-4xl'
+};
+---
+
+<div 
+  id={id}
+  class={`modal fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black bg-opacity-50 ${className}`}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby={title ? `${id}-title` : undefined}
+>
+  <div class={`modal-content bg-white rounded-lg shadow-xl w-full ${sizeClasses[size]} max-h-[90vh] overflow-hidden`}>
+    
+    {(title || showCloseButton) && (
+      <div class="modal-header flex items-center justify-between p-6 border-b border-gray-200">
+        {title && (
+          <h2 id={`${id}-title`} class="text-xl font-bold text-gray-900">
+            {title}
+          </h2>
+        )}
+        {showCloseButton && (
+          <button 
+            type="button" 
+            class="modal-close text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg p-1"
+            aria-label="Close modal"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        )}
+      </div>
+    )}
+    
+    <div class="modal-body p-6 overflow-y-auto">
+      <slot />
+    </div>
+    
+    <slot name="footer" />
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const modals = document.querySelectorAll('.modal');
+    
+    modals.forEach(modal => {
+      const closeButtons = modal.querySelectorAll('.modal-close');
+      const modalContent = modal.querySelector('.modal-content');
+      
+      // Close modal function
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+        
+        // Dispatch close event
+        modal.dispatchEvent(new CustomEvent('modal:close'));
+      }
+      
+      // Open modal function
+      function openModal() {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus first focusable element
+        const focusableElements = modal.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements.length > 0) {
+          focusableElements[0].focus();
+        }
+        
+        // Dispatch open event
+        modal.dispatchEvent(new CustomEvent('modal:open'));
+      }
+      
+      // Close button click handlers
+      closeButtons.forEach(button => {
+        button.addEventListener('click', closeModal);
+      });
+      
+      // Click outside to close
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+      
+      // Escape key to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+      
+      // Expose open/close methods
+      modal.openModal = openModal;
+      modal.closeModal = closeModal;
+    });
+    
+    // Global modal trigger handlers
+    document.addEventListener('click', function(e) {
+      const trigger = e.target.closest('[data-modal-target]');
+      if (trigger) {
+        e.preventDefault();
+        const targetId = trigger.dataset.modalTarget;
+        const targetModal = document.getElementById(targetId);
+        if (targetModal && targetModal.openModal) {
+          targetModal.openModal();
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .modal {
+    backdrop-filter: blur(4px);
+  }
+  
+  .modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+  }
+  
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style> 

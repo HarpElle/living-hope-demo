@@ -1,0 +1,68 @@
+---
+import Button from '../ui/Button.astro';
+
+const {
+  title = "Welcome Home to Living Hope",
+  subtitle = "A community of faith serving West Allis since 1966",
+  primaryCTA = { text: "Plan Your Visit", href: "/connect/im-new" },
+  secondaryCTA = { text: "Watch Live", href: "/worship/watch-online" },
+  backgroundImage = "/images/hero-sanctuary.jpg",
+  showScrollIndicator = true
+} = Astro.props;
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <!-- Church exterior background image -->
+    <img 
+      src="/images/church-exterior.jpg" 
+      alt="Living Hope Lutheran Church exterior" 
+      class="w-full h-full object-cover"
+    >
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-900/90 to-primary-700/70"></div>
+  </div>
+  
+  <!-- Content -->
+  <div class="container mx-auto px-4 relative z-10 pt-20">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight animate-fade-in">
+        Welcome Home to<br class="hidden sm:inline"><span class="sm:whitespace-nowrap"> Living Hope</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
+        {subtitle}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+        <Button 
+          href={primaryCTA.href} 
+          variant="secondary-light" 
+          size="lg"
+          class="min-w-[200px]"
+        >
+          {primaryCTA.text}
+        </Button>
+        <Button 
+          href={secondaryCTA.href} 
+          variant="secondary-light" 
+          size="lg"
+          class="min-w-[200px]"
+        >
+          {secondaryCTA.text}
+        </Button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  {showScrollIndicator && (
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="flex flex-col items-center text-white/80">
+        <span class="text-sm mb-2">Scroll to explore</span>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </div>
+  )}
+</section> 

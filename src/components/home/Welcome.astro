@@ -1,0 +1,105 @@
+---
+import Button from '../ui/Button.astro';
+
+const {
+  title = "Welcome to Our Church Family",
+  teamName = "Our Pastoral Team",
+  teamImage = "/images/pastoral-team.jpg",
+  welcomeMessage = "For over 55 years, Living Hope Lutheran Church has been a beacon of faith, hope, and love in the West Allis community. As a WELS congregation, we believe that everyone has a place at God's table, and we're committed to creating a welcoming environment where all can grow in faith and fellowship.",
+  mission = "To share God's love through worship, service, and community",
+  showVideo = true,
+  videoThumbnail = "/images/welcome-video-thumb.jpg",
+  videoUrl = "/videos/welcome-message.mp4"
+} = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Content Side -->
+      <div class="order-2 lg:order-1">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Welcome to Our<br class="hidden sm:inline"> Church Family
+        </h2>
+        
+        <div class="prose prose-lg text-gray-600 mb-8">
+          <p class="text-xl leading-relaxed">
+            {welcomeMessage}
+          </p>
+        </div>
+
+        <!-- Mission Statement -->
+        <div class="bg-primary-50 rounded-xl p-6 mb-8">
+          <h3 class="text-lg font-semibold text-primary-800 mb-2">Our Mission</h3>
+          <p class="text-primary-700 font-medium italic">
+            "{mission}"
+          </p>
+        </div>
+
+        <!-- Pastoral Team Info -->
+        <div class="flex items-center mb-8">
+          <div class="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4">
+            <img 
+              src="/images/church-leadership.jpg" 
+              alt="Church Leadership" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+          <div>
+            <p class="text-gray-600">A message from</p>
+            <p class="font-semibold text-gray-900">{teamName}</p>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <Button href="/about" variant="primary" size="lg">
+            Learn More About Us
+          </Button>
+          <Button href="/connect/im-new" variant="secondary" size="lg">
+            Plan Your Visit
+          </Button>
+        </div>
+      </div>
+
+      <!-- Visual Side -->
+      <div class="order-1 lg:order-2">
+        {showVideo ? (
+          <!-- Video Welcome Message -->
+          <div class="relative">
+            <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+              <video 
+                class="w-full h-full object-cover"
+                controls
+                preload="metadata"
+                poster={videoThumbnail}
+              >
+                <source src={videoUrl} type="video/mp4">
+                <p class="p-8 text-center text-gray-600">
+                  Your browser doesn't support video playback. 
+                  <a href={videoUrl} class="text-primary-600 hover:text-primary-700 underline">
+                    Download the video
+                  </a>
+                </p>
+              </video>
+            </div>
+          </div>
+        ) : (
+          <!-- Static Image -->
+          <div class="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+            <!-- Placeholder for church image -->
+            <div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
+              <div class="text-center text-primary-600">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m0 0h2M7 7h10M7 11h10M7 15h10"></path>
+                </svg>
+                <p class="font-medium">Church Image</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section> 

@@ -1,0 +1,402 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
+---
+
+<PageLayout 
+  title="Connect - Living Hope Lutheran Church"
+  description="Connect with Living Hope Lutheran Church community. Find Bible studies, ministries, volunteer opportunities, and ways to get involved in West Allis, WI."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6">
+          Connect & Grow
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-200 mb-8">
+          Find your place in our church family through meaningful relationships and spiritual growth
+        </p>
+                 <p class="text-lg text-primary-200">
+           Everyone has a place here - discover yours!
+         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Connect Options -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Start Your Journey
+          </h2>
+          <p class="text-xl text-gray-600">
+            Take the first step to connect with our community
+          </p>
+        </div>
+
+        <!-- Fellowship Image -->
+        <div class="mb-12">
+          <div class="aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
+            <img 
+              src="/images/church-fellowship.jpg" 
+              alt="Church fellowship and community gathering" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          
+          <!-- I'm New -->
+          <Card variant="elevated" class="text-center h-full">
+            <div class="p-8">
+              <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">I'm New Here</h3>
+              <p class="text-gray-600 mb-6">
+                Welcome! We're so glad you're here. Learn what to expect and plan your first visit.
+              </p>
+              <Button href="/connect/im-new" variant="primary" size="sm" class="w-full">
+                Plan Your Visit
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Prayer Request -->
+          <Card variant="elevated" class="text-center h-full">
+            <div class="p-8">
+              <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Prayer Request</h3>
+              <p class="text-gray-600 mb-6">
+                Share your prayer needs with our caring community. We're here to support you.
+              </p>
+              <Button href="/connect/prayer-request" variant="primary" size="sm" class="w-full">
+                Submit Request
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Get Involved -->
+          <Card variant="elevated" class="text-center h-full">
+            <div class="p-8">
+              <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Get Involved</h3>
+              <p class="text-gray-600 mb-6">
+                Discover volunteer opportunities and ways to serve in our community.
+              </p>
+              <Button href="/serve" variant="primary" size="sm" class="w-full">
+                Find Opportunities
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bible Studies & Small Groups -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Bible Studies & Small Groups
+          </h2>
+          <p class="text-xl text-gray-600">
+            Grow in faith through meaningful study and fellowship
+          </p>
+        </div>
+
+        <!-- Bible Study Image -->
+        <div class="mb-12">
+          <div class="aspect-[16/9] rounded-2xl overflow-hidden shadow-xl max-w-2xl mx-auto">
+            <img 
+              src="/images/bible-study-group.jpg" 
+              alt="Bible study group discussion" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Sunday Morning Bible Studies -->
+          <Card>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Sunday Morning Bible Studies</h3>
+              <p class="text-gray-600 mb-4">
+                Join us between services for in-depth Bible study and discussion.
+              </p>
+              <div class="text-sm text-gray-500 mb-4">
+                <p><strong>When:</strong> Sundays, 9:15 AM</p>
+                <p><strong>Where:</strong> Fellowship Hall</p>
+                <p><strong>Ages:</strong> All ages welcome</p>
+              </div>
+              <Button href="/contact" variant="secondary" size="sm">
+                Learn More
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Wednesday Bible Studies -->
+          <Card>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Wednesday Bible Studies</h3>
+              <p class="text-gray-600 mb-4">
+                Midweek study focusing on practical application of God's Word.
+              </p>
+              <div class="text-sm text-gray-500 mb-4">
+                <p><strong>When:</strong> Wednesdays, 7:00 PM</p>
+                <p><strong>Where:</strong> Church Library</p>
+                <p><strong>Ages:</strong> Adults</p>
+              </div>
+              <Button href="/contact" variant="secondary" size="sm">
+                Learn More
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Women's Bible Studies -->
+          <Card>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Women's Bible Studies</h3>
+              <p class="text-gray-600 mb-4">
+                Connect with other women while studying God's Word together.
+              </p>
+              <div class="text-sm text-gray-500 mb-4">
+                <p><strong>When:</strong> Select Saturdays</p>
+                <p><strong>Where:</strong> Various locations</p>
+                <p><strong>Ages:</strong> Women of all ages</p>
+              </div>
+              <Button href="/contact" variant="secondary" size="sm">
+                Learn More
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Men's Ministry -->
+          <Card>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Men's Ministry - Faith 2 Action</h3>
+              <p class="text-gray-600 mb-4">
+                Men's fellowship focused on putting faith into action in daily life.
+              </p>
+              <div class="text-sm text-gray-500 mb-4">
+                <p><strong>When:</strong> Monthly meetings</p>
+                <p><strong>Where:</strong> Fellowship Hall</p>
+                <p><strong>Ages:</strong> Men of all ages</p>
+              </div>
+              <Button href="/contact" variant="secondary" size="sm">
+                Learn More
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Seniors Bible Study -->
+          <Card>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Seniors Bible Study</h3>
+              <p class="text-gray-600 mb-4">
+                Bible study designed specifically for our senior members.
+              </p>
+              <div class="text-sm text-gray-500 mb-4">
+                <p><strong>When:</strong> Weekly</p>
+                <p><strong>Where:</strong> Senior Center</p>
+                <p><strong>Ages:</strong> 55+</p>
+              </div>
+              <Button href="/contact" variant="secondary" size="sm">
+                Learn More
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Teen Bible Study -->
+          <Card>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Teen Bible Study</h3>
+              <p class="text-gray-600 mb-4">
+                Youth-focused Bible study with relevant topics and discussions.
+              </p>
+              <div class="text-sm text-gray-500 mb-4">
+                <p><strong>When:</strong> Sundays after service</p>
+                <p><strong>Where:</strong> Youth Room</p>
+                <p><strong>Ages:</strong> 13-18</p>
+              </div>
+              <Button href="/contact" variant="secondary" size="sm">
+                Learn More
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Ministries -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Special Ministries
+          </h2>
+          <p class="text-xl text-gray-600">
+            Unique programs designed to serve our diverse community
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <!-- Jesus Cares Special Needs Ministry -->
+          <Card class="bg-primary-50 border-primary-200">
+            <div class="p-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Jesus Cares Special Needs Ministry</h3>
+              <p class="text-gray-600 mb-6">
+                A welcoming Bible class designed for individuals with special needs and their families. We believe everyone deserves to hear God's love.
+              </p>
+              <div class="text-sm text-gray-500 mb-6">
+                <p><strong>When:</strong> Select Mondays</p>
+                <p><strong>Where:</strong> Accessible classroom</p>
+                <p><strong>Contact:</strong> Church office for details</p>
+              </div>
+              <Button href="/contact" variant="primary">
+                Learn More
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Bible Information Class -->
+          <Card class="bg-secondary-50 border-secondary-200">
+            <div class="p-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Bible Information Class</h3>
+              <p class="text-gray-600 mb-6">
+                New to Christianity or want to learn more about Lutheran beliefs? This class covers the basics of Christian faith in a welcoming environment.
+              </p>
+              <div class="text-sm text-gray-500 mb-6">
+                <p><strong>When:</strong> By arrangement</p>
+                <p><strong>Where:</strong> Pastor's office or classroom</p>
+                <p><strong>Duration:</strong> 6-8 sessions</p>
+              </div>
+              <Button href="/contact" variant="primary">
+                Sign Up
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Programs -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Community & Fellowship
+          </h2>
+          <p class="text-xl text-gray-600">
+            Build lasting friendships through shared activities and interests
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Women's Service Group -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Women's Service Group</h3>
+              <p class="text-gray-600 text-sm mb-3">"Serving Hope"</p>
+              <p class="text-xs text-gray-500">Select Tuesdays</p>
+            </div>
+          </Card>
+
+          <!-- Lutheran Women's Missionary Society -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">LWMS</h3>
+              <p class="text-gray-600 text-sm mb-3">Lutheran Women's Missionary Society</p>
+              <p class="text-xs text-gray-500">Select Tuesdays</p>
+            </div>
+          </Card>
+
+          <!-- Sheepshead Fellowship -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293H15M9 10V9a2 2 0 012-2h2a2 2 0 012 2v1M9 10v5a2 2 0 002 2h2a2 2 0 002-2v-5"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Sheepshead Fellowship</h3>
+              <p class="text-gray-600 text-sm mb-3">Card game fellowship</p>
+              <p class="text-xs text-gray-500">Select Tuesdays</p>
+            </div>
+          </Card>
+
+          <!-- Stretch Class -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Stretch Class</h3>
+              <p class="text-gray-600 text-sm mb-3">Fitness & fellowship</p>
+              <p class="text-xs text-gray-500">Saturdays</p>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6">
+          Ready to Connect?
+        </h2>
+        <p class="text-xl text-primary-100 mb-8">
+          Take the next step in your faith journey. We're here to help you find your place in our church family.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/connect/im-new" variant="secondary" size="lg">
+            Plan Your Visit
+          </Button>
+          <Button href="/contact" variant="outline" size="lg">
+            Contact Us
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout> 

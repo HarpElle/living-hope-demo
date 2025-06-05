@@ -1,0 +1,98 @@
+---
+interface Props {
+  items: Array<{
+    title: string;
+    content: string;
+    isOpen?: boolean;
+  }>;
+  allowMultiple?: boolean;
+  class?: string;
+}
+
+const { 
+  items,
+  allowMultiple = false,
+  class: className = ""
+} = Astro.props;
+---
+
+<div class={`accordion ${className}`} data-allow-multiple={allowMultiple}>
+  {items.map((item, index) => (
+    <div class="accordion-item border-b border-gray-200 last:border-b-0">
+      <button 
+        class="accordion-trigger w-full text-left py-4 px-0 flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
+        data-index={index}
+        aria-expanded={item.isOpen ? "true" : "false"}
+      >
+        <span class="font-medium text-gray-900 pr-4">{item.title}</span>
+        <svg 
+          class={`accordion-icon w-5 h-5 text-gray-500 transition-transform duration-200 ${item.isOpen ? 'rotate-180' : ''}`}
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <div 
+        class={`accordion-content overflow-hidden transition-all duration-300 ease-in-out ${item.isOpen ? 'max-h-96 pb-4' : 'max-h-0'}`}
+        data-index={index}
+      >
+        <div class="text-gray-600" set:html={item.content}></div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordions = document.querySelectorAll('.accordion');
+    
+    accordions.forEach(accordion => {
+      const allowMultiple = accordion.dataset.allowMultiple === 'true';
+      const triggers = accordion.querySelectorAll('.accordion-trigger');
+      const contents = accordion.querySelectorAll('.accordion-content');
+      const icons = accordion.querySelectorAll('.accordion-icon');
+      
+      triggers.forEach((trigger, index) => {
+        trigger.addEventListener('click', function() {
+          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+          const content = contents[index];
+          const icon = icons[index];
+          
+          if (!allowMultiple) {
+            // Close all other items
+            triggers.forEach((otherTrigger, otherIndex) => {
+              if (otherIndex !== index) {
+                otherTrigger.setAttribute('aria-expanded', 'false');
+                contents[otherIndex].style.maxHeight = '0';
+                contents[otherIndex].classList.remove('pb-4');
+                icons[otherIndex].classList.remove('rotate-180');
+              }
+            });
+          }
+          
+          if (isExpanded) {
+            // Close this item
+            trigger.setAttribute('aria-expanded', 'false');
+            content.style.maxHeight = '0';
+            content.classList.remove('pb-4');
+            icon.classList.remove('rotate-180');
+          } else {
+            // Open this item
+            trigger.setAttribute('aria-expanded', 'true');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.classList.add('pb-4');
+            icon.classList.add('rotate-180');
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .accordion-content {
+    transition: max-height 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+  }
+</style> 

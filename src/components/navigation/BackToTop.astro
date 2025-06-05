@@ -1,0 +1,84 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<button 
+  id="back-to-top"
+  class={`fixed bottom-24 right-6 bg-gray-900/40 hover:bg-gray-900 text-white p-3 rounded-full shadow-xl transition-all duration-300 opacity-0 invisible z-40 backdrop-blur-sm border border-white/20 ${className}`}
+  aria-label="Back to top"
+  title="Back to top"
+>
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+  </svg>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (!backToTopButton) return;
+    
+    // Show/hide button based on scroll position
+    function toggleBackToTop() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    }
+    
+    // Smooth scroll to top
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', toggleBackToTop);
+    backToTopButton.addEventListener('click', scrollToTop);
+    
+    // Initial check
+    toggleBackToTop();
+  });
+</script>
+
+<style>
+  #back-to-top {
+    /* Enhanced backdrop blur for better visibility */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  #back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  #back-to-top:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 640px) {
+    #back-to-top {
+      bottom: 6rem;
+      right: 1rem;
+      padding: 0.75rem;
+    }
+    
+    #back-to-top svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+</style> 

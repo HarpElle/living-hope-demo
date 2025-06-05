@@ -1,0 +1,210 @@
+---
+interface Props {
+  placeholder?: string;
+  variant?: 'header' | 'page' | 'inline';
+  showButton?: boolean;
+  class?: string;
+}
+
+const { 
+  placeholder = "Search sermons, events, pages...",
+  variant = 'header',
+  showButton = true,
+  class: className = ""
+} = Astro.props;
+
+const variantClasses = {
+  header: 'text-sm',
+  page: 'text-lg',
+  inline: 'text-base'
+};
+
+const sizeClasses = {
+  header: 'px-4 py-2',
+  page: 'px-6 py-4',
+  inline: 'px-4 py-3'
+};
+---
+
+<div class={`search-box relative ${className}`}>
+  <form class="search-form flex" role="search" aria-label="Site search">
+    <div class="relative flex-1">
+      <input 
+        type="search" 
+        id="search-input"
+        name="q"
+        placeholder={placeholder}
+        class={`w-full ${sizeClasses[variant]} ${variantClasses[variant]} pl-10 pr-10 border border-gray-300 rounded-l-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${!showButton ? 'rounded-r-lg' : ''}`}
+        autocomplete="off"
+        aria-label="Search"
+      >
+      
+      <!-- Search Icon -->
+      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </div>
+      
+      <!-- Clear Button -->
+      <button 
+        type="button" 
+        class="clear-search absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 hidden"
+        aria-label="Clear search"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    
+    {showButton && (
+      <button 
+        type="submit" 
+        class={`bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-r-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${sizeClasses[variant]} ${variantClasses[variant]}`}
+        aria-label="Search"
+      >
+        <span class="hidden sm:inline">Search</span>
+        <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </button>
+    )}
+  </form>
+  
+  <!-- Search Suggestions Dropdown -->
+  <div class="search-suggestions absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 hidden z-50 max-h-96 overflow-y-auto">
+    <div class="p-4">
+      <div class="text-sm text-gray-500 mb-3">Quick suggestions:</div>
+      <div class="space-y-2">
+        <a href="/worship/sermons" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+          Recent Sermons
+        </a>
+        <a href="/events" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+          Upcoming Events
+        </a>
+        <a href="/connect/im-new" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+          I'm New Here
+        </a>
+        <a href="/about/staff" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+          Our Pastors
+        </a>
+        <a href="/worship/service-times" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+          Service Times
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchBoxes = document.querySelectorAll('.search-box');
+    
+    searchBoxes.forEach(searchBox => {
+      const form = searchBox.querySelector('.search-form');
+      const input = searchBox.querySelector('#search-input');
+      const clearButton = searchBox.querySelector('.clear-search');
+      const suggestions = searchBox.querySelector('.search-suggestions');
+      
+      // Show/hide clear button
+      function toggleClearButton() {
+        if (input.value.trim()) {
+          clearButton.classList.remove('hidden');
+        } else {
+          clearButton.classList.add('hidden');
+        }
+      }
+      
+      // Show/hide suggestions
+      function toggleSuggestions(show) {
+        if (show && input.value.length === 0) {
+          suggestions.classList.remove('hidden');
+        } else {
+          suggestions.classList.add('hidden');
+        }
+      }
+      
+      // Input event handlers
+      input.addEventListener('input', function() {
+        toggleClearButton();
+        
+        // Hide suggestions when typing
+        if (input.value.length > 0) {
+          suggestions.classList.add('hidden');
+        }
+      });
+      
+      input.addEventListener('focus', function() {
+        toggleSuggestions(true);
+      });
+      
+      input.addEventListener('blur', function() {
+        // Delay hiding to allow clicking on suggestions
+        setTimeout(() => {
+          toggleSuggestions(false);
+        }, 200);
+      });
+      
+      // Clear button
+      clearButton.addEventListener('click', function() {
+        input.value = '';
+        input.focus();
+        toggleClearButton();
+        toggleSuggestions(true);
+      });
+      
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = input.value.trim();
+        
+        if (query) {
+          // Redirect to search results page
+          window.location.href = `/search?q=${encodeURIComponent(query)}`;
+        }
+      });
+      
+      // Keyboard navigation for suggestions
+      input.addEventListener('keydown', function(e) {
+        const suggestionLinks = suggestions.querySelectorAll('a');
+        let currentIndex = -1;
+        
+        // Find currently focused suggestion
+        suggestionLinks.forEach((link, index) => {
+          if (link === document.activeElement) {
+            currentIndex = index;
+          }
+        });
+        
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (currentIndex < suggestionLinks.length - 1) {
+            suggestionLinks[currentIndex + 1].focus();
+          } else if (currentIndex === -1 && suggestionLinks.length > 0) {
+            suggestionLinks[0].focus();
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (currentIndex > 0) {
+            suggestionLinks[currentIndex - 1].focus();
+          } else if (currentIndex === 0) {
+            input.focus();
+          }
+        } else if (e.key === 'Escape') {
+          suggestions.classList.add('hidden');
+          input.blur();
+        }
+      });
+      
+      // Initialize
+      toggleClearButton();
+    });
+  });
+</script>
+
+<style>
+  .search-suggestions {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+</style> 
