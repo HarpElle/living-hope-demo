@@ -6,7 +6,9 @@ export function getAssetPath(path) {
   // In production, use the base URL from import.meta.env
   if (import.meta.env.PROD) {
     const baseUrl = import.meta.env.BASE_URL || '/';
-    return baseUrl + cleanPath;
+    // Ensure baseUrl ends with slash and cleanPath doesn't start with slash
+    const normalizedBase = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
+    return normalizedBase + cleanPath;
   }
   
   // In development, use the path as-is with leading slash
@@ -29,7 +31,9 @@ export function getPagePath(path) {
   // In production, use the base URL from import.meta.env
   if (import.meta.env.PROD) {
     const baseUrl = import.meta.env.BASE_URL || '/';
-    return baseUrl + cleanPath;
+    // Ensure baseUrl ends with slash and cleanPath doesn't start with slash
+    const normalizedBase = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
+    return normalizedBase + cleanPath;
   }
   
   // In development, use the path as-is with leading slash
