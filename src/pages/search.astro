@@ -14,6 +14,7 @@ const filter = url.searchParams.get('filter') || 'all';
 const sermons = await getCollection('sermons');
 const events = await getCollection('events');
 const staff = await getCollection('staff');
+const ministries = await getCollection('ministries');
 
 // Simple search function (in production, you'd use a proper search engine)
 function searchContent(items: any[], query: string, type: string) {
@@ -38,7 +39,8 @@ function searchContent(items: any[], query: string, type: string) {
     type,
     url: type === 'sermons' ? `/sermons/${item.slug}` : 
          type === 'events' ? `/events/${item.slug}` : 
-         type === 'staff' ? `/about/staff#${item.slug}` : '#'
+         type === 'staff' ? `/about/staff/${item.slug}` : 
+         type === 'ministries' ? `/serve/ministries/${item.slug}` : '#'
   }));
 }
 
@@ -48,8 +50,9 @@ if (query) {
   const sermonResults = filter === 'all' || filter === 'sermons' ? searchContent(sermons, query, 'sermons') : [];
   const eventResults = filter === 'all' || filter === 'events' ? searchContent(events, query, 'events') : [];
   const staffResults = filter === 'all' || filter === 'staff' ? searchContent(staff, query, 'staff') : [];
+  const ministryResults = filter === 'all' || filter === 'ministries' ? searchContent(ministries, query, 'ministries') : [];
   
-  searchResults = [...sermonResults, ...eventResults, ...staffResults];
+  searchResults = [...sermonResults, ...eventResults, ...staffResults, ...ministryResults];
 }
 
 // Sort by relevance (simple scoring)
@@ -151,6 +154,16 @@ const totalResults = searchResults.length;
                 >
                   Staff ({searchContent(staff, query, 'staff').length})
                 </a>
+                <a 
+                  href={`/search?q=${encodeURIComponent(query)}&filter=ministries`}
+                  class={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    filter === 'ministries' 
+                      ? 'bg-primary-600 text-white' 
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  Ministries ({searchContent(ministries, query, 'ministries').length})
+                </a>
               </div>
             </div>
 
@@ -166,10 +179,12 @@ const totalResults = searchResults.length;
                             <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                               result.type === 'sermons' ? 'bg-primary-100 text-primary-800' :
                               result.type === 'events' ? 'bg-secondary-100 text-secondary-800' :
+                              result.type === 'ministries' ? 'bg-green-100 text-green-800' :
                               'bg-accent-100 text-accent-800'
                             }`}>
                               {result.type === 'sermons' ? 'Sermon' : 
-                               result.type === 'events' ? 'Event' : 'Staff'}
+                               result.type === 'events' ? 'Event' : 
+                               result.type === 'ministries' ? 'Ministry' : 'Staff'}
                             </span>
                             {result.data.date && (
                               <span class="text-sm text-gray-500">
@@ -200,7 +215,8 @@ const totalResults = searchResults.length;
                       <div class="flex items-center justify-between">
                         <Button href={result.url} variant="primary" size="sm">
                           {result.type === 'sermons' ? 'Listen to Sermon' : 
-                           result.type === 'events' ? 'View Event' : 'View Profile'}
+                           result.type === 'events' ? 'View Event' : 
+                           result.type === 'ministries' ? 'Learn More' : 'View Profile'}
                         </Button>
                         {result.data.tags && result.data.tags.length > 0 && (
                           <div class="flex flex-wrap gap-1">

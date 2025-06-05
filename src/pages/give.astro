@@ -1,0 +1,429 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<PageLayout 
+  title="Give - Living Hope Lutheran Church"
+  description="Support the ministry of Living Hope Lutheran Church through your generous giving. Learn about tithing, online giving, and how your gifts make a difference."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Give with a Grateful Heart
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-100 mb-8">
+          Your generous gifts support our ministry and mission to share God's love
+        </p>
+        <p class="text-lg text-primary-200">
+          "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Giving Options -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Ways to Give
+          </h2>
+          <p class="text-xl text-gray-600">
+            Choose the giving method that works best for you
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          
+          <!-- Online Giving -->
+          <Card variant="elevated" class="text-center h-full">
+            <div class="p-8">
+              <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Online Giving</h3>
+              <p class="text-gray-600 mb-6">
+                Secure, convenient giving from your computer or mobile device. Set up one-time or recurring gifts.
+              </p>
+              <Button href="#online-form" variant="primary" size="sm" class="w-full">
+                Give Online Now
+              </Button>
+            </div>
+          </Card>
+
+          <!-- In-Person Giving -->
+          <Card variant="elevated" class="text-center h-full">
+            <div class="p-8">
+              <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">In-Person Giving</h3>
+              <p class="text-gray-600 mb-6">
+                Place your offering in the collection plate during worship services or drop off at the church office.
+              </p>
+              <Button href="/worship/service-times" variant="secondary" size="sm" class="w-full">
+                Service Times
+              </Button>
+            </div>
+          </Card>
+
+          <!-- Mail Giving -->
+          <Card variant="elevated" class="text-center h-full">
+            <div class="p-8">
+              <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Mail Your Gift</h3>
+              <p class="text-gray-600 mb-6">
+                Send your check or money order to our church office. Make checks payable to "Living Hope Lutheran Church."
+              </p>
+              <Button href="/contact" variant="secondary" size="sm" class="w-full">
+                Mailing Address
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Online Giving Form -->
+  <section id="online-form" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto">
+        <Card>
+          <div class="p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+              Online Giving Form
+            </h2>
+            <p class="text-gray-600 mb-8 text-center">
+              This is a prototype form. In the full implementation, this would integrate with a secure payment processor like Stripe or PayPal.
+            </p>
+            
+            <form class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">
+                    First Name *
+                  </label>
+                  <input 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName" 
+                    required 
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  >
+                </div>
+                <div>
+                  <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
+                    Last Name *
+                  </label>
+                  <input 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName" 
+                    required 
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  >
+                </div>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address *
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                >
+              </div>
+
+              <div>
+                <label for="giftType" class="block text-sm font-medium text-gray-700 mb-2">
+                  Gift Type *
+                </label>
+                <select 
+                  id="giftType" 
+                  name="giftType" 
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                >
+                  <option value="">Select gift type</option>
+                  <option value="tithe">Tithe/General Fund</option>
+                  <option value="missions">Missions</option>
+                  <option value="building">Building Fund</option>
+                  <option value="school">School Support</option>
+                  <option value="special">Special Offering</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="amount" class="block text-sm font-medium text-gray-700 mb-2">
+                  Gift Amount *
+                </label>
+                <div class="relative">
+                  <span class="absolute left-3 top-3 text-gray-500">$</span>
+                  <input 
+                    type="number" 
+                    id="amount" 
+                    name="amount" 
+                    min="1" 
+                    step="0.01" 
+                    required 
+                    class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    placeholder="0.00"
+                  >
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-3">
+                  Frequency *
+                </label>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex items-center">
+                    <input 
+                      type="radio" 
+                      id="oneTime" 
+                      name="frequency" 
+                      value="one-time"
+                      class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
+                      checked
+                    >
+                    <label for="oneTime" class="ml-3 text-sm text-gray-700">
+                      One-time gift
+                    </label>
+                  </div>
+                  <div class="flex items-center">
+                    <input 
+                      type="radio" 
+                      id="recurring" 
+                      name="frequency" 
+                      value="recurring"
+                      class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
+                    >
+                    <label for="recurring" class="ml-3 text-sm text-gray-700">
+                      Recurring gift
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="recurringOptions" class="hidden">
+                <label for="recurringFreq" class="block text-sm font-medium text-gray-700 mb-2">
+                  Recurring Frequency
+                </label>
+                <select 
+                  id="recurringFreq" 
+                  name="recurringFreq"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                >
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly" selected>Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                  <option value="annually">Annually</option>
+                </select>
+              </div>
+
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <div>
+                    <h4 class="text-sm font-medium text-blue-800 mb-1">Prototype Notice</h4>
+                    <p class="text-sm text-blue-700">
+                      This is a demonstration form. In the full implementation, this would connect to a secure payment processor for actual transactions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <button 
+                type="submit" 
+                class="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              >
+                Continue to Payment
+              </button>
+            </form>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact of Giving -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Your Gifts Make a Difference
+          </h2>
+          <p class="text-xl text-gray-600">
+            See how your generous giving supports our ministry and mission
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Worship & Ministry -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Worship & Ministry</h3>
+              <p class="text-sm text-gray-600">
+                Supporting pastoral care, worship services, and spiritual growth programs
+              </p>
+            </div>
+          </Card>
+
+          <!-- Education -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Education</h3>
+              <p class="text-sm text-gray-600">
+                Funding our school, childcare center, and educational programs for all ages
+              </p>
+            </div>
+          </Card>
+
+          <!-- Missions -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Missions</h3>
+              <p class="text-sm text-gray-600">
+                Supporting WELS missions locally and around the world to share the Gospel
+              </p>
+            </div>
+          </Card>
+
+          <!-- Community -->
+          <Card class="text-center">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">Community</h3>
+              <p class="text-sm text-gray-600">
+                Outreach programs, food pantry, and support for families in need
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Biblical Foundation -->
+  <section class="py-16 bg-primary-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">
+          Biblical Foundation for Giving
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <Card class="bg-white">
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-3">Cheerful Giving</h3>
+              <p class="text-gray-600 mb-4">
+                "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+              </p>
+              <p class="text-sm text-primary-600 font-medium">2 Corinthians 9:7</p>
+            </div>
+          </Card>
+
+          <Card class="bg-white">
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-3">Faithful Stewardship</h3>
+              <p class="text-gray-600 mb-4">
+                "Bring the whole tithe into the storehouse, that there may be food in my house. Test me in this, says the Lord Almighty, and see if I will not throw open the floodgates of heaven."
+              </p>
+              <p class="text-sm text-primary-600 font-medium">Malachi 3:10</p>
+            </div>
+          </Card>
+        </div>
+
+        <div class="mt-8">
+          <p class="text-lg text-gray-700">
+            At Living Hope, we believe that giving is an act of worship and a response to God's abundant blessings in our lives. Your gifts, whether large or small, are used faithfully to advance God's kingdom and serve our community.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact for Questions -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">
+          Questions About Giving?
+        </h2>
+        <p class="text-xl text-gray-600 mb-8">
+          Our pastoral team is here to help you understand biblical stewardship and answer any questions about giving.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="primary" size="lg">
+            Contact Church Office
+          </Button>
+          <Button href="mailto:church@livinghopelutheran.org" variant="secondary" size="lg">
+            Email Us
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script>
+  // Show/hide recurring options based on frequency selection
+  document.addEventListener('DOMContentLoaded', function() {
+    const oneTimeRadio = document.getElementById('oneTime');
+    const recurringRadio = document.getElementById('recurring');
+    const recurringOptions = document.getElementById('recurringOptions');
+
+    function toggleRecurringOptions() {
+      if (recurringRadio.checked) {
+        recurringOptions.classList.remove('hidden');
+      } else {
+        recurringOptions.classList.add('hidden');
+      }
+    }
+
+    oneTimeRadio.addEventListener('change', toggleRecurringOptions);
+    recurringRadio.addEventListener('change', toggleRecurringOptions);
+  });
+</script> 
