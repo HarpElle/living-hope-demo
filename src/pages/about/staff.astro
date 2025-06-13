@@ -125,7 +125,7 @@ const breadcrumbItems = [
                     
                     <!-- View Profile Button -->
                     <div class="mt-4">
-                      <Button href={`/about/staff/${member.slug}`} variant="secondary" size="sm">
+                      <Button href={getPagePath(`/about/staff/${member.slug}`)} variant="secondary" size="sm">
                         View Full Profile
                       </Button>
                     </div>
@@ -194,7 +194,7 @@ const breadcrumbItems = [
                     )}
                   </div>
                   
-                  <Button href={`/about/staff/${member.slug}`} variant="secondary" size="sm">
+                  <Button href={getPagePath(`/about/staff/${member.slug}`)} variant="secondary" size="sm">
                     View Profile
                   </Button>
                 </div>
