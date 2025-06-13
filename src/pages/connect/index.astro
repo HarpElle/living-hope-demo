@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
-import { getAssetPath } from '../../utils/paths.js';
+import { getAssetPath, getPagePath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -64,7 +64,7 @@ import { getAssetPath } from '../../utils/paths.js';
               <p class="text-gray-600 mb-6">
                 Welcome! We're so glad you're here. Learn what to expect and plan your first visit.
               </p>
-              <Button href="/connect/im-new" variant="primary" size="sm" class="w-full">
+              <Button href={getPagePath("/connect/im-new")} variant="primary" size="sm" class="w-full">
                 Plan Your Visit
               </Button>
             </div>
@@ -82,7 +82,7 @@ import { getAssetPath } from '../../utils/paths.js';
               <p class="text-gray-600 mb-6">
                 Share your prayer needs with our caring community. We're here to support you.
               </p>
-              <Button href="/connect/prayer-request" variant="primary" size="sm" class="w-full">
+              <Button href={getPagePath("/connect/prayer-request")} variant="primary" size="sm" class="w-full">
                 Submit Request
               </Button>
             </div>
@@ -100,7 +100,7 @@ import { getAssetPath } from '../../utils/paths.js';
               <p class="text-gray-600 mb-6">
                 Discover volunteer opportunities and ways to serve in our community.
               </p>
-              <Button href="/serve" variant="primary" size="sm" class="w-full">
+              <Button href={getPagePath("/serve")} variant="primary" size="sm" class="w-full">
                 Find Opportunities
               </Button>
             </div>

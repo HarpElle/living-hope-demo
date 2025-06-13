@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
-import { getAssetPath } from '../../utils/paths.js';
+import { getAssetPath, getPagePath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -378,7 +378,7 @@ import { getAssetPath } from '../../utils/paths.js';
         </div>
 
         <div class="mt-12">
-          <Button href="/contact" variant="primary" size="lg">
+          <Button href={getPagePath("/contact")} variant="primary" size="lg">
             Contact Us Today
           </Button>
         </div>
@@ -397,10 +397,10 @@ import { getAssetPath } from '../../utils/paths.js';
           God has given you unique talents and abilities. Discover how you can use them to serve others and grow in faith.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/contact" variant="secondary" size="lg">
+          <Button href={getPagePath("/contact")} variant="secondary" size="lg">
             Find Your Place to Serve
           </Button>
-          <Button href="/connect/im-new" variant="outline" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="outline" size="lg">
             Learn More About Us
           </Button>
         </div>

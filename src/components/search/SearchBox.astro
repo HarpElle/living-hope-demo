@@ -162,8 +162,10 @@ const sizeClasses = {
         const query = input.value.trim();
         
         if (query) {
+          // Get the base URL from the current page
+          const basePath = document.querySelector('meta[name="base-path"]')?.getAttribute('content') || '';
           // Redirect to search results page
-          window.location.href = `/search?q=${encodeURIComponent(query)}`;
+          window.location.href = `${basePath}/search?q=${encodeURIComponent(query)}`;
         }
       });
       

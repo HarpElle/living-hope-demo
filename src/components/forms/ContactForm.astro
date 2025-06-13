@@ -1,10 +1,9 @@
 ---
-import Button from '../ui/Button.astro';
 import { getPagePath } from '../../utils/paths.js';
 
 interface Props {
   title?: string;
-  description?: string;
+  subtitle?: string;
   showSubject?: boolean;
   defaultSubject?: string;
   submitText?: string;
@@ -14,10 +13,12 @@ interface Props {
 const { 
   title = "Send Us a Message",
   subtitle = "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
-  showContactInfo = true,
-  variant = "default",
+  showSubject = true,
+  defaultSubject = "",
+  submitText = "Send Message",
   class: className = ""
 } = Astro.props;
+---
 
 <div class={`contact-form ${className}`}>
   <div class="mb-6">
@@ -58,7 +59,7 @@ const {
           required 
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
           placeholder="Your first name"
-        >
+        />
         <div class="error-message hidden text-red-600 text-sm mt-1"></div>
       </div>
       <div>
@@ -72,7 +73,7 @@ const {
           required
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
           placeholder="Your last name"
-        >
+        />
         <div class="error-message hidden text-red-600 text-sm mt-1"></div>
       </div>
     </div>
@@ -88,7 +89,7 @@ const {
         required
         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
         placeholder="your.email@example.com"
-      >
+      />
       <div class="error-message hidden text-red-600 text-sm mt-1"></div>
     </div>
 
@@ -102,7 +103,7 @@ const {
         name="phone"
         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
         placeholder="(555) 123-4567"
-      >
+      />
       <div class="error-message hidden text-red-600 text-sm mt-1"></div>
     </div>
 
@@ -154,7 +155,7 @@ const {
         id="newsletter" 
         name="newsletter" 
         class="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-      >
+      />
       <label for="newsletter" class="ml-3 text-sm text-gray-600">
         I'd like to receive occasional updates about church events and activities
       </label>
@@ -167,7 +168,7 @@ const {
         name="privacy" 
         required
         class="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-      >
+      />
       <label for="privacy" class="ml-3 text-sm text-gray-600">
         I agree to the <a href={getPagePath("/privacy")} class="text-primary-600 hover:text-primary-700 underline">privacy policy</a> and understand my information will be used to respond to my inquiry. *
       </label>
@@ -186,118 +187,120 @@ const {
 </div>
 
 <script>
-  // Form validation and submission
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contact-form');
-    const submitButton = document.getElementById('submit-button');
-    const submitText = document.getElementById('submit-text');
-    const loadingText = document.getElementById('loading-text');
-    const formMessages = document.getElementById('form-messages');
-    const successMessage = document.getElementById('success-message');
-    const errorMessage = document.getElementById('error-message');
-    const errorText = document.getElementById('error-text');
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  const submitButton = document.getElementById('submit-button');
+  const submitText = document.getElementById('submit-text');
+  const loadingText = document.getElementById('loading-text');
+  const formMessages = document.getElementById('form-messages');
+  const successMessage = document.getElementById('success-message');
+  const errorMessage = document.getElementById('error-message');
+  const errorText = document.getElementById('error-text');
 
-    // Real-time validation
-    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+  // Real-time validation
+  const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+  inputs.forEach(input => {
+    input.addEventListener('blur', validateField);
+    input.addEventListener('input', clearFieldError);
+  });
+
+  function validateField(e) {
+    const field = e.target;
+    const errorDiv = field.parentNode.querySelector('.error-message');
+    
+    if (!field.value.trim()) {
+      showFieldError(field, errorDiv, 'This field is required');
+      return false;
+    }
+
+    if (field.type === 'email' && !isValidEmail(field.value)) {
+      showFieldError(field, errorDiv, 'Please enter a valid email address');
+      return false;
+    }
+
+    clearFieldError(field, errorDiv);
+    return true;
+  }
+
+  function showFieldError(field, errorDiv, message) {
+    field.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+    field.classList.remove('border-gray-300', 'focus:border-primary-500', 'focus:ring-primary-500');
+    errorDiv.textContent = message;
+    errorDiv.classList.remove('hidden');
+  }
+
+  function clearFieldError(field, errorDiv) {
+    field.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+    field.classList.add('border-gray-300', 'focus:border-primary-500', 'focus:ring-primary-500');
+    if (errorDiv) {
+      errorDiv.classList.add('hidden');
+    }
+  }
+
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // Form submission
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Validate all fields
+    let isValid = true;
     inputs.forEach(input => {
-      input.addEventListener('blur', validateField);
-      input.addEventListener('input', clearFieldError);
-    });
-
-    function validateField(e) {
-      const field = e.target;
-      const errorDiv = field.parentNode.querySelector('.error-message');
-      
-      if (!field.value.trim()) {
-        showFieldError(field, errorDiv, 'This field is required');
-        return false;
-      }
-
-      if (field.type === 'email' && !isValidEmail(field.value)) {
-        showFieldError(field, errorDiv, 'Please enter a valid email address');
-        return false;
-      }
-
-      clearFieldError(field, errorDiv);
-      return true;
-    }
-
-    function showFieldError(field, errorDiv, message) {
-      field.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
-      field.classList.remove('border-gray-300', 'focus:border-primary-500', 'focus:ring-primary-500');
-      errorDiv.textContent = message;
-      errorDiv.classList.remove('hidden');
-    }
-
-    function clearFieldError(field, errorDiv) {
-      field.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
-      field.classList.add('border-gray-300', 'focus:border-primary-500', 'focus:ring-primary-500');
-      if (errorDiv) {
-        errorDiv.classList.add('hidden');
-      }
-    }
-
-    function isValidEmail(email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    }
-
-    // Form submission
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      // Validate all fields
-      let isValid = true;
-      inputs.forEach(input => {
-        if (!validateField({ target: input })) {
-          isValid = false;
-        }
-      });
-
-      // Check privacy checkbox
-      const privacyCheckbox = document.getElementById('privacy');
-      const privacyError = privacyCheckbox.parentNode.querySelector('.error-message');
-      if (!privacyCheckbox.checked) {
-        showFieldError(privacyCheckbox, privacyError, 'You must agree to the privacy policy');
+      if (!validateField({ target: input })) {
         isValid = false;
       }
-
-      if (!isValid) {
-        return;
-      }
-
-      // Show loading state
-      submitButton.disabled = true;
-      submitText.classList.add('hidden');
-      loadingText.classList.remove('hidden');
-
-      // Simulate form submission (replace with actual endpoint)
-      try {
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API call
-        
-        // Show success message
-        formMessages.classList.remove('hidden');
-        successMessage.classList.remove('hidden');
-        errorMessage.classList.add('hidden');
-        
-        // Reset form
-        form.reset();
-        
-        // Scroll to success message
-        formMessages.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-      } catch (error) {
-        // Show error message
-        formMessages.classList.remove('hidden');
-        errorMessage.classList.remove('hidden');
-        successMessage.classList.add('hidden');
-        errorText.textContent = 'There was an error sending your message. Please try again or contact us directly.';
-      } finally {
-        // Reset button state
-        submitButton.disabled = false;
-        submitText.classList.remove('hidden');
-        loadingText.classList.add('hidden');
-      }
     });
+
+    // Check privacy checkbox
+    const privacyCheckbox = document.getElementById('privacy');
+    const privacyError = privacyCheckbox.parentNode.querySelector('.error-message');
+    if (!privacyCheckbox.checked) {
+      showFieldError(privacyCheckbox, privacyError, 'You must agree to the privacy policy');
+      isValid = false;
+    } else {
+      clearFieldError(privacyCheckbox, privacyError);
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    // Show loading state
+    submitButton.disabled = true;
+    submitText.classList.add('hidden');
+    loadingText.classList.remove('hidden');
+
+    // Simulate form submission
+    try {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      // TODO: Replace with actual form submission endpoint
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Show success message
+      formMessages.classList.remove('hidden');
+      successMessage.classList.remove('hidden');
+      errorMessage.classList.add('hidden');
+      
+      // Reset form
+      form.reset();
+      
+    } catch (error) {
+      // Show error message
+      formMessages.classList.remove('hidden');
+      errorMessage.classList.remove('hidden');
+      successMessage.classList.add('hidden');
+      errorText.textContent = 'There was an error sending your message. Please try again.';
+    } finally {
+      // Reset button state
+      submitButton.disabled = false;
+      submitText.classList.remove('hidden');
+      loadingText.classList.add('hidden');
+    }
   });
+});
 </script> 

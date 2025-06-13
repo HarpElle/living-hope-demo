@@ -1,6 +1,7 @@
 ---
 import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
+import { getPagePath } from '../../utils/paths.js';
 
 interface RelatedItem {
   title: string;
@@ -135,10 +136,10 @@ const getTypeColor = (type: string) => {
       <div class="mt-6 text-center">
         <Button 
           href={
-            displayItems[0]?.type === 'sermon' ? '/worship/sermons' :
-            displayItems[0]?.type === 'event' ? '/events' :
-            displayItems[0]?.type === 'staff' ? '/about/staff' :
-            '/search'
+            displayItems[0]?.type === 'sermon' ? getPagePath('/sermons') :
+            displayItems[0]?.type === 'event' ? getPagePath('/events') :
+            displayItems[0]?.type === 'staff' ? getPagePath('/about/staff') :
+            getPagePath('/search')
           }
           variant="secondary"
         >
