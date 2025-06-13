@@ -4,6 +4,7 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 import Card from '../../../components/ui/Card.astro';
 import Button from '../../../components/ui/Button.astro';
 import Breadcrumbs from '../../../components/navigation/Breadcrumbs.astro';
+import { getPagePath } from '../../../utils/paths.js';
 
 // Get all ministries and sort by featured first, then alphabetically
 const ministries = await getCollection('ministries');
@@ -274,10 +275,10 @@ const getCategoryIcon = (category) => {
           Every ministry needs volunteers who are passionate about serving God and others. Find your place to make a difference.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/serve" variant="secondary" size="lg">
+          <Button href={getPagePath("/serve")} variant="secondary" size="lg">
             Volunteer Opportunities
           </Button>
-          <Button href="/contact" variant="outline" size="lg">
+          <Button href={getPagePath("/contact")} variant="outline" size="lg">
             Questions? Contact Us
           </Button>
         </div>

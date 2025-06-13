@@ -2,6 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Card from '../../components/ui/Card.astro';
 import Button from '../../components/ui/Button.astro';
+import { getPagePath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -118,7 +119,7 @@ import Button from '../../components/ui/Button.astro';
             <p class="text-primary-700 mb-4">
               Can't make it in person? Join us online for our Sunday 10:30 AM service, livestreamed on our YouTube channel: <strong>@Living.Hope.Lutheran.Church</strong>
             </p>
-            <Button href="/worship/watch-online" variant="primary">
+            <Button href={getPagePath("/worship/watch-online")} variant="primary">
               Watch Live Online
             </Button>
           </div>
@@ -244,10 +245,10 @@ import Button from '../../components/ui/Button.astro';
           We'd love to welcome you to any of our services. Come as you are!
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/connect/im-new" variant="secondary" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="secondary" size="lg">
             Plan Your Visit
           </Button>
-          <Button href="/contact" variant="outline" size="lg">
+          <Button href={getPagePath("/contact")} variant="outline" size="lg">
             Contact Us
           </Button>
         </div>

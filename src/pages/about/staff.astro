@@ -4,6 +4,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Card from '../../components/ui/Card.astro';
 import Button from '../../components/ui/Button.astro';
 import Breadcrumbs from '../../components/navigation/Breadcrumbs.astro';
+import { getPagePath } from '../../utils/paths.js';
 
 // Get all staff members and sort by order
 const staff = await getCollection('staff');
@@ -250,10 +251,10 @@ const breadcrumbItems = [
         </div>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/contact" variant="primary" size="lg">
+          <Button href={getPagePath("/contact")} variant="primary" size="lg">
             Contact Form
           </Button>
-          <Button href="/connect/im-new" variant="secondary" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="secondary" size="lg">
             Plan Your Visit
           </Button>
         </div>

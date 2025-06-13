@@ -2,6 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Card from '../../components/ui/Card.astro';
 import Button from '../../components/ui/Button.astro';
+import { getPagePath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -243,10 +244,10 @@ import Button from '../../components/ui/Button.astro';
                           <Button href="https://www.youtube.com/@Living.Hope.Lutheran.Church" variant="secondary" size="lg" target="_blank">
             Watch on YouTube
           </Button>
-          <Button href="/worship/service-times" variant="outline" size="lg">
+          <Button href={getPagePath("/worship/service-times")} variant="outline" size="lg">
             In-Person Services
           </Button>
-          <Button href="/connect/im-new" variant="outline" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="outline" size="lg">
             Plan Your Visit
           </Button>
         </div>

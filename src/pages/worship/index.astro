@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
-import { getAssetPath } from '../../utils/paths.js';
+import { getAssetPath, getPagePath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -102,7 +102,7 @@ import { getAssetPath } from '../../utils/paths.js';
         </div>
 
         <div class="text-center">
-          <Button href="/worship/service-times" variant="primary" size="lg">
+          <Button href={getPagePath("/worship/service-times")} variant="primary" size="lg">
             Learn More About Our Services
           </Button>
         </div>
@@ -185,7 +185,7 @@ import { getAssetPath } from '../../utils/paths.js';
               Our live stream includes the full worship experience - music, message, and community prayers. You can participate from anywhere and still feel connected to our church family.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
-              <Button href="/worship/watch-online" variant="primary" size="lg">
+              <Button href={getPagePath("/worship/watch-online")} variant="primary" size="lg">
                 Watch Online
               </Button>
               <Button href="https://www.youtube.com/@Living.Hope.Lutheran.Church" variant="secondary" size="lg">
@@ -218,10 +218,10 @@ import { getAssetPath } from '../../utils/paths.js';
           We can't wait to welcome you into our church family. Come experience God's love in action.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/connect/im-new" variant="secondary" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="secondary" size="lg">
             Plan Your Visit
           </Button>
-          <Button href="/contact" variant="outline" size="lg">
+          <Button href={getPagePath("/contact")} variant="outline" size="lg">
             Contact Us
           </Button>
         </div>

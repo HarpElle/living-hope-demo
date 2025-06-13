@@ -148,7 +148,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <p><strong>Where:</strong> Fellowship Hall</p>
                 <p><strong>Ages:</strong> All ages welcome</p>
               </div>
-              <Button href="/contact" variant="secondary" size="sm">
+              <Button href={getPagePath("/contact")} variant="secondary" size="sm">
                 Learn More
               </Button>
             </div>
@@ -166,7 +166,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <p><strong>Where:</strong> Church Library</p>
                 <p><strong>Ages:</strong> Adults</p>
               </div>
-              <Button href="/contact" variant="secondary" size="sm">
+              <Button href={getPagePath("/contact")} variant="secondary" size="sm">
                 Learn More
               </Button>
             </div>
@@ -184,7 +184,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <p><strong>Where:</strong> Various locations</p>
                 <p><strong>Ages:</strong> Women of all ages</p>
               </div>
-              <Button href="/contact" variant="secondary" size="sm">
+              <Button href={getPagePath("/contact")} variant="secondary" size="sm">
                 Learn More
               </Button>
             </div>
@@ -202,7 +202,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <p><strong>Where:</strong> Fellowship Hall</p>
                 <p><strong>Ages:</strong> Men of all ages</p>
               </div>
-              <Button href="/contact" variant="secondary" size="sm">
+              <Button href={getPagePath("/contact")} variant="secondary" size="sm">
                 Learn More
               </Button>
             </div>
@@ -220,7 +220,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <p><strong>Where:</strong> Senior Center</p>
                 <p><strong>Ages:</strong> 55+</p>
               </div>
-              <Button href="/contact" variant="secondary" size="sm">
+              <Button href={getPagePath("/contact")} variant="secondary" size="sm">
                 Learn More
               </Button>
             </div>
@@ -238,7 +238,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <p><strong>Where:</strong> Youth Room</p>
                 <p><strong>Ages:</strong> 13-18</p>
               </div>
-              <Button href="/contact" variant="secondary" size="sm">
+              <Button href={getPagePath("/contact")} variant="secondary" size="sm">
                 Learn More
               </Button>
             </div>
@@ -275,7 +275,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <p><strong>Where:</strong> Accessible classroom</p>
                 <p><strong>Contact:</strong> Church office for details</p>
               </div>
-              <Button href="/contact" variant="primary">
+              <Button href={getPagePath("/contact")} variant="primary">
                 Learn More
               </Button>
             </div>
@@ -293,7 +293,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <p><strong>Where:</strong> Pastor's office or classroom</p>
                 <p><strong>Duration:</strong> 6-8 sessions</p>
               </div>
-              <Button href="/contact" variant="primary">
+              <Button href={getPagePath("/contact")} variant="primary">
                 Sign Up
               </Button>
             </div>
@@ -389,10 +389,10 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
           Take the next step in your faith journey. We're here to help you find your place in our church family.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/connect/im-new" variant="secondary" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="secondary" size="lg">
             Plan Your Visit
           </Button>
-          <Button href="/contact" variant="outline" size="lg">
+          <Button href={getPagePath("/contact")} variant="outline" size="lg">
             Contact Us
           </Button>
         </div>

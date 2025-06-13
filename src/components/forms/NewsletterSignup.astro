@@ -1,4 +1,6 @@
 ---
+import { getPagePath } from '../../utils/paths.js';
+
 interface Props {
   title?: string;
   description?: string;
@@ -175,7 +177,7 @@ const themeClasses = {
   {variant !== 'inline' && (
     <p class={`text-xs mt-4 text-center ${themeClasses[theme].privacy}`}>
       We respect your privacy. Unsubscribe at any time. 
-      <a href="/privacy" class={`underline ${themeClasses[theme].privacyLink}`}>Privacy Policy</a>
+                      <a href={getPagePath("/privacy")} class={`underline ${themeClasses[theme].privacyLink}`}>Privacy Policy</a>
     </p>
   )}
 </div>

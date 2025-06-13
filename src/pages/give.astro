@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Card from '../components/ui/Card.astro';
 import Button from '../components/ui/Button.astro';
+import { getPagePath } from '../utils/paths.js';
 ---
 
 <PageLayout 
@@ -70,7 +71,7 @@ import Button from '../components/ui/Button.astro';
               <p class="text-gray-600 mb-6">
                 Place your offering in the collection plate during worship services or drop off at the church office.
               </p>
-              <Button href="/worship/service-times" variant="secondary" size="sm" class="w-full">
+              <Button href={getPagePath("/worship/service-times")} variant="secondary" size="sm" class="w-full">
                 Service Times
               </Button>
             </div>
@@ -88,7 +89,7 @@ import Button from '../components/ui/Button.astro';
               <p class="text-gray-600 mb-6">
                 Send your check or money order to our church office. Make checks payable to "Living Hope Lutheran Church."
               </p>
-              <Button href="/contact" variant="secondary" size="sm" class="w-full">
+              <Button href={getPagePath("/contact")} variant="secondary" size="sm" class="w-full">
                 Mailing Address
               </Button>
             </div>
@@ -396,7 +397,7 @@ import Button from '../components/ui/Button.astro';
           Our pastoral team is here to help you understand biblical stewardship and answer any questions about giving.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/contact" variant="primary" size="lg">
+          <Button href={getPagePath("/contact")} variant="primary" size="lg">
             Contact Church Office
           </Button>
           <Button href="mailto:church@livinghopelutheran.org" variant="secondary" size="lg">

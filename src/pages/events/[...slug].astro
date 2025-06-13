@@ -5,6 +5,7 @@ import Card from '../../components/ui/Card.astro';
 import Button from '../../components/ui/Button.astro';
 import Breadcrumbs from '../../components/navigation/Breadcrumbs.astro';
 import RelatedContent from '../../components/navigation/RelatedContent.astro';
+import { getPagePath } from '../../utils/paths.js';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -232,7 +233,7 @@ const isUpcoming = new Date(event.data.date) >= new Date();
                       Contact for Info
                     </Button>
                   ) : (
-                    <Button href="/contact" variant="primary" size="sm" class="w-full">
+                    <Button href={getPagePath("/contact")} variant="primary" size="sm" class="w-full">
                       Get More Info
                     </Button>
                   )}
@@ -259,7 +260,7 @@ END:VCALENDAR`}
                 
                 <!-- Back to Events -->
                 <div class="mt-6 pt-6 border-t border-gray-200">
-                  <Button href="/events" variant="outline" size="sm" class="w-full">
+                  <Button href={getPagePath("/events")} variant="outline" size="sm" class="w-full">
                     ← All Events
                   </Button>
                 </div>
@@ -327,10 +328,10 @@ END:VCALENDAR`}
           Don't miss out on upcoming events and opportunities to connect with our church family.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/events" variant="secondary" size="lg">
+          <Button href={getPagePath("/events")} variant="secondary" size="lg">
             View All Events
           </Button>
-          <Button href="/connect/im-new" variant="outline" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="outline" size="lg">
             Plan Your Visit
           </Button>
         </div>

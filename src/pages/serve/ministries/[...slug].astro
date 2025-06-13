@@ -5,6 +5,7 @@ import Card from '../../../components/ui/Card.astro';
 import Button from '../../../components/ui/Button.astro';
 import Breadcrumbs from '../../../components/navigation/Breadcrumbs.astro';
 import RelatedContent from '../../../components/navigation/RelatedContent.astro';
+import { getPagePath } from '../../../utils/paths.js';
 
 export async function getStaticPaths() {
   const ministries = await getCollection('ministries');
@@ -210,18 +211,18 @@ const getCategoryIcon = (category) => {
                       Contact Leader
                     </Button>
                   ) : (
-                    <Button href="/contact" variant="primary" size="sm" class="w-full">
+                    <Button href={getPagePath("/contact")} variant="primary" size="sm" class="w-full">
                       Get More Info
                     </Button>
                   )}
-                  <Button href="/serve" variant="secondary" size="sm" class="w-full">
+                  <Button href={getPagePath("/serve")} variant="secondary" size="sm" class="w-full">
                     Volunteer Opportunities
                   </Button>
                 </div>
                 
                 <!-- Back to Ministries -->
                 <div class="mt-6 pt-6 border-t border-gray-200">
-                  <Button href="/serve/ministries" variant="outline" size="sm" class="w-full">
+                  <Button href={getPagePath("/serve/ministries")} variant="outline" size="sm" class="w-full">
                     ← All Ministries
                   </Button>
                 </div>
@@ -277,11 +278,11 @@ const getCategoryIcon = (category) => {
               Contact {ministry.data.leader || 'Ministry Leader'}
             </Button>
           ) : (
-            <Button href="/contact" variant="secondary" size="lg">
+            <Button href={getPagePath("/contact")} variant="secondary" size="lg">
               Contact Church Office
             </Button>
           )}
-          <Button href="/connect/im-new" variant="outline" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="outline" size="lg">
             Plan Your Visit
           </Button>
         </div>

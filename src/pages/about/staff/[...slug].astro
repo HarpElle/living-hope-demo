@@ -195,10 +195,10 @@ const relatedContentItems = otherStaff.map(s => ({
           Have questions or need pastoral care? Our team is here to help and support you.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/contact" variant="secondary" size="lg">
+          <Button href={getPagePath("/contact")} variant="secondary" size="lg">
             Contact Form
           </Button>
-          <Button href="/connect/prayer-request" variant="outline" size="lg">
+          <Button href={getPagePath("/connect/prayer-request")} variant="outline" size="lg">
             Prayer Request
           </Button>
         </div>
