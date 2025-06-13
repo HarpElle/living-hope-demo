@@ -252,13 +252,13 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
           We'd love to connect with you and answer any questions you might have about our church family.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/connect/im-new" variant="primary" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="primary" size="lg">
             Plan Your Visit
           </Button>
           <Button href={getPagePath("/about/staff")} variant="secondary" size="lg">
             Meet Our Team
           </Button>
-          <Button href="/contact" variant="secondary" size="lg">
+          <Button href={getPagePath("/contact")} variant="secondary" size="lg">
             Contact Us
           </Button>
         </div>

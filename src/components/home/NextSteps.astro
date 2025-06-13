@@ -11,28 +11,28 @@ const {
       title: "Visit Us",
       description: "Join us for worship and experience our welcoming community firsthand",
       icon: "visit",
-      action: { text: "Plan Your Visit", href: "/connect/im-new" },
+      action: { text: "Plan Your Visit", href: getPagePath("/connect/im-new") },
       featured: false
     },
     {
       title: "Connect",
       description: "Find your community through small groups, Bible studies, and fellowship",
       icon: "connect",
-      action: { text: "Find a Group", href: "/connect/small-groups" },
+      action: { text: "Find a Group", href: getPagePath("/connect") },
       featured: false
     },
     {
       title: "Serve",
       description: "Use your gifts to make a difference in our church and community",
       icon: "serve",
-      action: { text: "Get Involved", href: "/connect/volunteer" },
+      action: { text: "Get Involved", href: getPagePath("/serve") },
       featured: false
     },
     {
       title: "Grow",
       description: "Deepen your faith through classes, mentorship, and spiritual practices",
       icon: "grow",
-      action: { text: "Learn More", href: "/connect/classes" },
+      action: { text: "Learn More", href: getPagePath("/worship") },
       featured: false
     }
   ]
@@ -117,7 +117,7 @@ const icons = {
           We're here to help you find your place in our church family. Reach out anytime - we'd love to connect with you.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/contact" variant="primary" size="lg">
+          <Button href={getPagePath("/contact")} variant="primary" size="lg">
             Contact Us
           </Button>
           <Button href={getPagePath("/about/staff")} variant="secondary" size="lg">

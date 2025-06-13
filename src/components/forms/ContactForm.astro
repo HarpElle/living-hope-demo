@@ -1,4 +1,7 @@
 ---
+import Button from '../ui/Button.astro';
+import { getPagePath } from '../../utils/paths.js';
+
 interface Props {
   title?: string;
   description?: string;
@@ -9,19 +12,17 @@ interface Props {
 }
 
 const { 
-  title = "Get In Touch",
-  description = "We'd love to hear from you!",
-  showSubject = true,
-  defaultSubject = "",
-  submitText = "Send Message",
+  title = "Send Us a Message",
+  subtitle = "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+  showContactInfo = true,
+  variant = "default",
   class: className = ""
 } = Astro.props;
----
 
 <div class={`contact-form ${className}`}>
   <div class="mb-6">
     <h3 class="text-2xl font-bold text-gray-900 mb-2">{title}</h3>
-    <p class="text-gray-600">{description}</p>
+    <p class="text-gray-600">{subtitle}</p>
   </div>
   
   <form class="space-y-6" id="contact-form">
@@ -168,7 +169,7 @@ const {
         class="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
       >
       <label for="privacy" class="ml-3 text-sm text-gray-600">
-        I agree to the <a href="/privacy" class="text-primary-600 hover:text-primary-700 underline">privacy policy</a> and understand my information will be used to respond to my inquiry. *
+        I agree to the <a href={getPagePath("/privacy")} class="text-primary-600 hover:text-primary-700 underline">privacy policy</a> and understand my information will be used to respond to my inquiry. *
       </label>
       <div class="error-message hidden text-red-600 text-sm mt-1 ml-7"></div>
     </div>

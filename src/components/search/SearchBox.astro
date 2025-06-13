@@ -79,19 +79,19 @@ const sizeClasses = {
     <div class="p-4">
       <div class="text-sm text-gray-500 mb-3">Quick suggestions:</div>
       <div class="space-y-2">
-        <a href="/worship/sermons" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+        <a href={getPagePath("/worship/sermons")} class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
           Recent Sermons
         </a>
-        <a href="/events" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+        <a href={getPagePath("/events")} class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
           Upcoming Events
         </a>
-        <a href="/connect/im-new" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+        <a href={getPagePath("/connect/im-new")} class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
           I'm New Here
         </a>
         <a href={getPagePath("/about/staff")} class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
           Our Pastors
         </a>
-        <a href="/worship/service-times" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+        <a href={getPagePath("/worship/service-times")} class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
           Service Times
         </a>
       </div>

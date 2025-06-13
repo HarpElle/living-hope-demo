@@ -103,7 +103,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
                 <strong>1337 South 100th Street</strong><br>
                 West Allis, WI 53214
               </p>
-              <Button href="/contact/location" variant="primary" size="sm" class="mt-4">
+              <Button href={getPagePath("/contact/location")} variant="primary" size="sm" class="mt-4">
                 Get Directions
               </Button>
             </div>
@@ -257,7 +257,7 @@ import { getAssetPath, getPagePath } from '../../utils/paths.js';
           Whether you're looking for a church home, have questions about faith, or need pastoral care, we're here to help.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/connect/im-new" variant="secondary" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="secondary" size="lg">
             Plan Your Visit
           </Button>
           <Button href={getPagePath("/about/staff")} variant="outline" size="lg">

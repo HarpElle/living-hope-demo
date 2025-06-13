@@ -1,6 +1,7 @@
 ---
 import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
+import { getPagePath } from '../../utils/paths.js';
 
 const {
   title = "Join Us for Worship",
@@ -127,10 +128,10 @@ const {
           We'd love to welcome you! Learn what to expect and let us know you're coming. You can also join us online for our Sunday 10:30 AM service livestreamed on YouTube.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/connect/im-new" variant="primary" size="lg">
+          <Button href={getPagePath("/connect/im-new")} variant="primary" size="lg">
             Plan Your Visit
           </Button>
-          <Button href="/worship/watch-online" variant="secondary" size="lg">
+          <Button href={getPagePath("/worship/watch-online")} variant="secondary" size="lg">
             Watch Online
           </Button>
         </div>

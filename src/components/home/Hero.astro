@@ -1,12 +1,12 @@
 ---
 import Button from '../ui/Button.astro';
-import { getAssetPath } from '../../utils/paths.js';
+import { getAssetPath, getPagePath } from '../../utils/paths.js';
 
 const {
   title = "Welcome Home to Living Hope",
   subtitle = "A community of faith serving West Allis since 1966",
-  primaryCTA = { text: "Plan Your Visit", href: "/connect/im-new" },
-  secondaryCTA = { text: "Watch Live", href: "/worship/watch-online" },
+  primaryCTA = { text: "Plan Your Visit", href: getPagePath("/connect/im-new") },
+  secondaryCTA = { text: "Watch Live", href: getPagePath("/worship/watch-online") },
   backgroundImage = "/images/hero-sanctuary.jpg",
   showScrollIndicator = true
 } = Astro.props;
