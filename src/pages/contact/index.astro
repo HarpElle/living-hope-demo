@@ -3,7 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Card from '../../components/ui/Card.astro';
 import Button from '../../components/ui/Button.astro';
 import ContactForm from '../../components/forms/ContactForm.astro';
-import { getAssetPath } from '../../utils/paths.js';
+import { getAssetPath, getPagePath } from '../../utils/paths.js';
 ---
 
 <PageLayout 
@@ -260,8 +260,8 @@ import { getAssetPath } from '../../utils/paths.js';
           <Button href="/connect/im-new" variant="secondary" size="lg">
             Plan Your Visit
           </Button>
-          <Button href="/about/staff" variant="outline" size="lg">
-            Meet Our Pastors
+          <Button href={getPagePath("/about/staff")} variant="outline" size="lg">
+            Meet Our Team
           </Button>
         </div>
       </div>

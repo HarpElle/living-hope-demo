@@ -5,6 +5,7 @@ import Card from '../../../components/ui/Card.astro';
 import Button from '../../../components/ui/Button.astro';
 import Breadcrumbs from '../../../components/navigation/Breadcrumbs.astro';
 import RelatedContent from '../../../components/navigation/RelatedContent.astro';
+import { getPagePath } from '../../../utils/paths.js';
 
 export async function getStaticPaths() {
   const staff = await getCollection('staff');
@@ -143,8 +144,8 @@ const relatedContentItems = otherStaff.map(s => ({
                 
                 <!-- Back to Staff -->
                 <div class="mt-6 pt-6 border-t border-gray-200">
-                  <Button href="/about/staff" variant="outline" size="sm" class="w-full">
-                    ← Back to All Staff
+                  <Button href={getPagePath("/about/staff")} variant="outline" size="sm" class="w-full">
+                    Back to Team
                   </Button>
                 </div>
               </div>

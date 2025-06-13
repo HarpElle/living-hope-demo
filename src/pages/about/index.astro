@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import Card from '../../components/ui/Card.astro';
-import { getAssetPath } from '../../utils/paths.js';
+import { getAssetPath, getPagePath } from '../../utils/paths.js';
 ---
 
 <PageLayout title="About Us" description="Learn about Living Hope Lutheran Church - our mission, vision, and the community that has been serving West Allis since 1966.">
@@ -72,7 +72,7 @@ import { getAssetPath } from '../../utils/paths.js';
             <p class="text-primary-600 text-sm mt-2">- Living Hope Lutheran Church Mission</p>
           </div>
 
-          <Button href="/about/staff" variant="primary" size="lg">
+          <Button href={getPagePath("/about/staff")} variant="primary" size="lg">
             Meet Our Pastoral Team
           </Button>
         </div>
@@ -255,7 +255,7 @@ import { getAssetPath } from '../../utils/paths.js';
           <Button href="/connect/im-new" variant="primary" size="lg">
             Plan Your Visit
           </Button>
-          <Button href="/about/staff" variant="secondary" size="lg">
+          <Button href={getPagePath("/about/staff")} variant="secondary" size="lg">
             Meet Our Team
           </Button>
           <Button href="/contact" variant="secondary" size="lg">

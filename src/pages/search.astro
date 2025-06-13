@@ -4,6 +4,7 @@ import SearchBox from '../components/search/SearchBox.astro';
 import Card from '../components/ui/Card.astro';
 import Button from '../components/ui/Button.astro';
 import { getCollection } from 'astro:content';
+import { getPagePath } from '../utils/paths.js';
 
 // Get search query from URL
 const url = new URL(Astro.request.url);
@@ -275,7 +276,7 @@ const totalResults = searchResults.length;
                   <a href="/search?q=events" class="block text-primary-600 hover:text-primary-700 transition-colors">
                     Upcoming Events
                   </a>
-                  <a href="/search?q=pastor" class="block text-primary-600 hover:text-primary-700 transition-colors">
+                  <a href={getPagePath("/about/staff")} class="block text-primary-600 hover:text-primary-700 transition-colors">
                     Our Pastors
                   </a>
                   <a href="/search?q=bible study" class="block text-primary-600 hover:text-primary-700 transition-colors">

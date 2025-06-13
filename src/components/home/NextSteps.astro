@@ -1,6 +1,7 @@
 ---
 import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
+import { getPagePath } from '../../utils/paths.js';
 
 const {
   title = "Take Your Next Step",
@@ -119,7 +120,7 @@ const icons = {
           <Button href="/contact" variant="primary" size="lg">
             Contact Us
           </Button>
-          <Button href="/about/staff" variant="secondary" size="lg">
+          <Button href={getPagePath("/about/staff")} variant="secondary" size="lg">
             Meet Our Team
           </Button>
         </div>

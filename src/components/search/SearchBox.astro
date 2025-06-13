@@ -1,4 +1,6 @@
 ---
+import { getPagePath } from '../../utils/paths.js';
+
 interface Props {
   placeholder?: string;
   variant?: 'header' | 'page' | 'inline';
@@ -86,7 +88,7 @@ const sizeClasses = {
         <a href="/connect/im-new" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
           I'm New Here
         </a>
-        <a href="/about/staff" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
+        <a href={getPagePath("/about/staff")} class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
           Our Pastors
         </a>
         <a href="/worship/service-times" class="block text-sm text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-2 py-1 rounded">
