@@ -20,7 +20,7 @@ const categories = [...new Set(events.map(event => event.data.category))];
 
 // Breadcrumb items
 const breadcrumbItems = [
-  { label: 'Connect', href: '/connect' },
+  { label: 'Connect', href: getPagePath('/connect') },
   { label: 'Events', current: true }
 ];
 ---

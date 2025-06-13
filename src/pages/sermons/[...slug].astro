@@ -29,8 +29,8 @@ const relatedSermons = allSermons
 
 // Prepare breadcrumb items
 const breadcrumbItems = [
-  { label: 'Worship', href: '/worship' },
-  { label: 'Sermons', href: '/worship/sermons' },
+  { label: 'Worship', href: getPagePath('/worship') },
+  { label: 'Sermons', href: getPagePath('/sermons') },
   { label: sermon.data.title, current: true }
 ];
 
@@ -38,7 +38,7 @@ const breadcrumbItems = [
 const relatedContentItems = relatedSermons.map(s => ({
   title: s.data.title,
   description: s.data.description,
-  href: `/sermons/${s.slug}`,
+  href: getPagePath(`/sermons/${s.slug}`),
   type: 'sermon' as const,
   date: s.data.date.toISOString()
 }));

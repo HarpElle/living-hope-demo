@@ -26,8 +26,8 @@ const relatedMinistries = allMinistries
 
 // Prepare breadcrumb items
 const breadcrumbItems = [
-  { label: 'Serve', href: '/serve' },
-  { label: 'Ministries', href: '/serve/ministries' },
+  { label: 'Serve', href: getPagePath('/serve') },
+  { label: 'Ministries', href: getPagePath('/serve/ministries') },
   { label: ministry.data.title, current: true }
 ];
 
@@ -35,7 +35,7 @@ const breadcrumbItems = [
 const relatedContentItems = relatedMinistries.map(m => ({
   title: m.data.title,
   description: m.data.description,
-  href: `/serve/ministries/${m.slug}`,
+  href: getPagePath(`/serve/ministries/${m.slug}`),
   type: 'ministry' as const
 }));
 

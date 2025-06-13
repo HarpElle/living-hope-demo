@@ -26,8 +26,8 @@ const otherStaff = allStaff
 
 // Prepare breadcrumb items
 const breadcrumbItems = [
-  { label: 'About', href: '/about' },
-  { label: 'Our Staff', href: '/about/staff' },
+  { label: 'About', href: getPagePath('/about') },
+  { label: 'Our Staff', href: getPagePath('/about/staff') },
   { label: member.data.name, current: true }
 ];
 
@@ -35,7 +35,7 @@ const breadcrumbItems = [
 const relatedContentItems = otherStaff.map(s => ({
   title: s.data.name,
   description: s.data.bio,
-  href: `/about/staff/${s.slug}`,
+  href: getPagePath(`/about/staff/${s.slug}`),
   type: 'staff' as const
 }));
 ---

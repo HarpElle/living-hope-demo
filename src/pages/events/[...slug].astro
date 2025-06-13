@@ -26,8 +26,8 @@ const relatedEvents = allEvents
 
 // Prepare breadcrumb items
 const breadcrumbItems = [
-  { label: 'Connect', href: '/connect' },
-  { label: 'Events', href: '/events' },
+  { label: 'Connect', href: getPagePath('/connect') },
+  { label: 'Events', href: getPagePath('/events') },
   { label: event.data.title, current: true }
 ];
 
@@ -35,7 +35,7 @@ const breadcrumbItems = [
 const relatedContentItems = relatedEvents.map(e => ({
   title: e.data.title,
   description: e.data.description,
-  href: `/events/${e.slug}`,
+  href: getPagePath(`/events/${e.slug}`),
   type: 'event' as const,
   date: e.data.date.toISOString()
 }));
